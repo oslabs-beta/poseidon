@@ -1,11 +1,6 @@
 import connectMongo from '../../../utils/connectMongo';
-import Test from '../../../models/test';
+import User from '../../../models/user';
 import type { NextApiRequest, NextApiResponse } from 'next';
-
-// type Data = {
-//   name: string;
-//   email: string;
-// }
 
 export default async function addTest(
   req: NextApiRequest,
@@ -17,10 +12,10 @@ export default async function addTest(
     console.log('CONNECTED TO MONGO');
 
     console.log('CREATING DOCUMENT');
-    const test = await Test.create(req.body);
+    const user = await User.create(req.body);
     console.log('CREATED DOCUMENT');
 
-    res.json({ test });
+    res.json({ user });
   } catch (error) {
     console.log(error);
     res.json({ error });
