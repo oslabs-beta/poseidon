@@ -1,11 +1,8 @@
-
-export default function About () {
+export default function About() {
   return (
-    <>
+    <div>
       <h1>POSEIDON</h1>
-      <p>
-        Information about our product
-      </p>
-    </>
+      <p>Information about our product</p>
+    </div>
   );
-};
+}
