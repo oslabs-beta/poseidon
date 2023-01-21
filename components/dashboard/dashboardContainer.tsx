@@ -1,5 +1,6 @@
-import CostComponent from './CostComponent';
-import Grafana from './Grafana';
+import CostComponent from './costComponent';
+import Grafana from './grafana';
+
 export default function DashboardContainer() {
   return (
     <div>
