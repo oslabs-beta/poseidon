@@ -1,15 +1,27 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Layout from '../components/layout'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import DashboardContainer from '../components/dashboard/DashboardContainer';
+import NavBar from '../components/navbar';
+import Footer from '../components/footer';
 
-export default function Home ({ props }) {
+// for reference:
+// // // type Props = {
+// // 	children: ReactElement,
+// // 	home: ReactElement
+// //   }
+
+// // export default function Layout({ props: Props }: ReactElement) {
+
+export default function Home() {
   return (
-    <Layout home>
+    <div>
       <Head>
         <title>Poseidon</title>
       </Head>
-      <h1>this is index</h1>
-    </Layout>
-  )
+      <NavBar />
+      <DashboardContainer />
+      <Footer />
+    </div>
+  );
 }
