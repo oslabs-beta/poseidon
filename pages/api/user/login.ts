@@ -17,8 +17,8 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
             //check inputted password with saved hashed password
             // console.log('L15', user);
             return user
-              ? res.status(200).json({ user })
-              : res.redirect(307, '/register');
+              ? res.status(200).json({user})
+              : res.redirect('/register');
           }
         } catch (reason) {
           return res.status(500).json({ login: `Error in GET. ${reason}` });

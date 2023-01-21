@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import DashboardContainer from '../components/dashboard/DashboardContainer';
+import DashboardContainer from '../components/dashboard/dashboardContainer';
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
 
