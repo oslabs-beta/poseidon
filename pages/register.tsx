@@ -1,17 +1,26 @@
+import Head from 'next/head';
 import Link from 'next/link';
+import RegisterForm from '../components/register';
 
 export default function Register() {
   return (
-    <div>
-      <p>this is signup</p>
-      <form method="POST" action="/signup">
-        <input name="firstname" type="text" placeholder="firstname"></input>
-        <input name="lastname" type="text" placeholder="lastname"></input>
-        <input name="email" type="text" placeholder="email"></input>
-        <input name="password" type="password" placeholder="password"></input>
-        <button type="submit">Sign Up</button>
-      </form>
-      <Link href="/">Back to home</Link>
+    <div className='grid h-screen place-items-center '>
+      <Head>
+        <title>Sign Up Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className='bg-slate-600 container mx-auto w-80 grid-cols-1 gap-0 content-center rounded '>
+        <div>
+          <RegisterForm/>
+        </div>
+        
+        <div className='flex items-center justify-center'>
+          <Link 
+            href="/"
+          >Back to home</Link> 
+        </div>
+      </main>
     </div>
   );
 }

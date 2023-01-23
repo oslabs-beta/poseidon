@@ -14,13 +14,13 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
       case 'POST':
         try {
           const user = await User.findOne({ email });
+          // need to handle incorrect password
           if (user && (await bcrypt.compare(password, user.password))) {
-            //check inputted password with saved hashed password
-            // console.log('L15', user);
-            return user
-              ? res.status(200).json({user})
-              : res.redirect('/register');
+            return res.json({user});
+          } else {
+            return res.json({ user });
           }
+
         } catch (reason) {
           return res.status(500).json({ login: `Error in GET. ${reason}` });
         }
