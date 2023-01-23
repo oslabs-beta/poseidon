@@ -1,6 +1,7 @@
 'use client'
 import { Formik, Field, Form, FormikHelpers} from 'formik';
-import * as Yup from "yup";
+// import * as Yup from "yup";
+import { useRouter } from "next/navigation";
 
 interface Values {
   email: string;
@@ -8,7 +9,7 @@ interface Values {
 }
 
 export default function LoginForm() {
-
+  const router = useRouter();
   const loginUser = async (body: Values) => {
     try {
       const res = await fetch(`/api/user/login`, {
@@ -19,9 +20,17 @@ export default function LoginForm() {
         },
         body: JSON.stringify(body),
       })
-      const data = await res.json();
+      const { user } = await res.json();
       // if data present - redirect to dashboard
-      console.log(data);
+      if(user) {
+        router.push(`/`);
+      }
+      else {
+        // user is not in the db - route to sign up page
+        // NEED TO ADD MESSAGE EXPLAINING WHAT TO DO + WHY
+        router.push(`/register`);
+      }
+      
     } catch (err) {
       console.log(err);
     }
