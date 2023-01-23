@@ -6,13 +6,13 @@ import LoginForm from '../components/login';
 
 const Home: NextPage = () => {
   return (
-    <div className='grid h-screen place-items-center bg-zinc-800'>
+    <div className='grid h-screen place-items-center '>
       <Head>
         <title>Login Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='bg-slate-600 container mx-auto w-80 grid-cols-1 gap-0 content-center rounded'>
+      <main className='bg-slate-600 container mx-auto w-80 grid-cols-1 gap-0 content-center rounded '>
         <div>
           <LoginForm/>
         </div>
