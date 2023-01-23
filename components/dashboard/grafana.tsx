@@ -1,3 +1,8 @@
 export default function Grafana() {
-  return <div>Grafana</div>;
+  return (
+    <div>
+      Grafana
+
+    </div>
+  );
 }

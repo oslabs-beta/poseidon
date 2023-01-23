@@ -1,0 +1,13 @@
+prometheus:
+  prometheusSpec:
+    remoteWrite:
+    - url: "<Your Cloud Prometheus instance remote_write endpoint>"
+      basicAuth:
+          username:
+            name: kubepromsecret
+            key: username
+          password:
+            name: kubepromsecret
+            key: password
+    replicaExternalLabelName: "__replica__"
+    externalLabels: {cluster: "test"}
