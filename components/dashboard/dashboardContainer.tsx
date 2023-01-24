@@ -10,12 +10,11 @@ export default function DashboardContainer() {
     visualizers.push( <Grafana key={i}/> );
   }
 
-  // I BROKE THE CODE I AM SORRY - JOSH
   return (
     <div>
       <section className="flex flex-wrap text-gray-600 body-font w-full border-solid border-2 border-sky-500 ">
         <div className="container flex flex-wrap px-5 py-24 mx-auto border-solid border-2 border-orange-400">
-          <div className="flex flex-wrap m-4 w-3/4">
+          <div className="container flex flex-wrap m-4 w-fit">
             {visualizers}
           </div>
         </div>
