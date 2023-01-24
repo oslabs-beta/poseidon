@@ -2,9 +2,8 @@ export default function Grafana() {
   
 	return (
 		<div>
-      Grafana
-			<div className="border border-gray-200 p-6 m-6 rounded-lg w-96">
-				<div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+			<div className="bg-gray-200 border border-gray-200 p-6 m-2 rounded-lg w-96 shadow-lg shadow-slate-700/50 hover:scale-105 transition duration-300 ease-in-out">
+				<div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-cyan-100 text-blue-500 mb-4">
 					<svg
 						fill="none"
 						stroke="currentColor"

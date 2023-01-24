@@ -12,8 +12,8 @@ export default function DashboardContainer() {
 
   return (
     <div>
-      <section className="flex flex-wrap text-gray-600 body-font w-full border-solid border-2 border-sky-500 ">
-        <div className="container flex flex-wrap px-5 py-24 mx-auto border-solid border-2 border-orange-400">
+      <section className="bg-gradient-to-b from-gray-400 to-slate-400 flex flex-wrap text-gray-600 body-font w-full shadow-inner">
+        <div className="container flex flex-wrap px-5 py-24 mx-auto">
           <div className="container flex flex-wrap m-4 w-fit">
             {visualizers}
           </div>
