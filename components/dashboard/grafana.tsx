@@ -2,6 +2,7 @@ export default function Grafana() {
   
 	return (
 		<div>
+      Grafana
 			<div className="border border-gray-200 p-6 m-6 rounded-lg w-96">
 				<div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
 					<svg
