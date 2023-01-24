@@ -2,10 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body {
-    /* background-image: linear-gradient(to right top, #306ce6, #0094f6, #00afdb, #00c2a8, #67cf78); */
-    background-color: #070714;
-    color: white; 
-}
-
