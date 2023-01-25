@@ -2,47 +2,60 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <div>
-      <footer className="bg-gray-800 text-gray-200 body-font">
-        <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-          <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-200">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-            {/* <span className="ml-3 text-xl">POSEIDON</span> */}
-          </a>
-          {/* <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Poseidon — */}
-          <p className="text-sm text-gray-500 sm:ml-4 sm:pl-0.5">
-            © 2020 Poseidon —
-            {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-            </svg> */}
-            <Link
-              href="https://github.com/oslabs-beta/poseidon"
-              className="text-gray-600 ml-1"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              @poseidon
-            </Link>
-          </p>
-          <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-            <a className="ml-3 text-gray-500">
-              {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-              </svg> */}
-            </a>
-          </span>
+    <div >
+      {/* <div className='border-4 border-indigo-200 border-t-indigo-500 '></div> */}
+      {/* <hr className="h-px p-8 border-0 bg-cyan-600 blur-3xl"></hr> */}
+      <section className="bg-gray-900 ">
+            <div
+                  className="max-w-lg bg-gray-900 px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center"
+                >
+                  <h1
+                    className="text-3xl font-extrabold leading-10 tracking-tight text-left text-white text-center sm:leading-none md:text-6xl text-1xl lg:text-7xl"
+                  >
+                    <span className="inline md:block">Learn More</span>
+                    <span
+                      className=" mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-emerald-400 to-green-500 md:inline-block"
+                    > About<span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-500 via-cyon-400 to-blue-300"> Poseidon</span> </span>
+                  </h1>
+                  <div
+                    className="mx-auto rounded-lg font-black mt-5 text-zinc-400 md:mt-12 md:max-w-lg text-center lg:text-lg"
+                  >
+                    <Link
+                      href=""
+                      className="inline-flex text-white items-center shadow-xl px-3 py-2 border-0 bg-gradient-to-r from-green-400 to-blue-500 hover: from-pink-500 hover:to-yellow-500 hover:scale-125 rounded text-base mt-4 md:mt-0 shadow-lg shadow-blue-500/50"
+                    >
+                      Main Page
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        className="w-4 h-4 ml-1 text-white "
+                        viewBox="0 0 24 24"
+                      >
+                        
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+        </section>
+{/*         
+      <hr className="text-white mx-5" /> */}
+        <footer className="bg-gray-900 pb-5">
+        <div class="container mx-auto px-6">
+        <div class=" flex flex-col items-center">
+            <div class="sm:w-2/3 text-center py-6">
+                <p class="text-sm text-blue-700 font-bold mb-2">
+                    © 2023 by Pavlove BIOKOU
+                </p>
+            </div>
         </div>
+    </div>
       </footer>
-      {/* <a href="https://github.com/oslabs-beta/poseidon">our github</a> */}
+
+      
     </div>
   );
 }
