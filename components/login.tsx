@@ -36,9 +36,9 @@ export default function LoginForm() {
   };
 
   return (
-    <div className='bg-slate-600 container mx-auto w-80 flex justify-center rounded'>
+    <div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
       <div className='flex-col align-center'>
-        <h1 className="flex-col align-center m-3 font-bold text-lg ">Login</h1>
+        <h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">Login</h1>
         <Formik
           initialValues={{
               email: '',
@@ -93,9 +93,10 @@ export default function LoginForm() {
                 <button 
                   type="submit" 
                   // disabled={!input}
-                  className="
-                    bg-blue-500 hover:bg-blue-700 hover:scale-125 hover:accent-white text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed
-                  "
+                  className='bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white'
+                  // "
+                  //   bg-sky-400 hover:bg-sky-600 hover:scale-125 hover:accent-white text-slate-200 font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed
+                  // "
                 >Login</button>
               </div>
           </Form>

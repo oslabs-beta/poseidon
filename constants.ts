@@ -1,4 +1,4 @@
-export const name: string = 'diB0CbTVz';
+export const name: string = 'IeOCqpTVk';
 export const dashUrls: string[] = [
   `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674591611424&to=1674595211424&panelId=2`,
   `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674591663279&to=1674595263279&panelId=3`,
