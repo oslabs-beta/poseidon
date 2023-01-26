@@ -11,7 +11,10 @@ module.exports = {
       colors: {
         'pink': '#ff49db'
         // @apply bg-sky-400 hover:bg-sky-600 hover:scale-125 hover:accent-white text-slate-200 font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed;
-      }
+      },
+      // animation: {
+      //   'spin-slow': 'spin 3s linear infinite',
+      // }
     }
   },
   fontFamily: {

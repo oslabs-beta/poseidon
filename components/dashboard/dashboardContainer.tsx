@@ -16,11 +16,8 @@ export default function DashboardContainer() {
 		<div>
 			<section className="bg-slate-900 flex flex-wrap text-gray-600 body-font w-full shadow-inner body">
 				<div className="container flex flex-wrap justify-between mx-auto w-30 px-12 py-5">
-					{/* justify-around */}
-					{/* <div className="container flex justify-center flex-wrap m-4 w-fit"> */}
 					{visualizers}
 				</div>
-				{/* </div> */}
 			</section>
 		</div>
 	);

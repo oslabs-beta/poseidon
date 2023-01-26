@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import RegisterForm from '../components/register';
+import Logo from '../public/LOGO-FINAL.svg'
 
 export default function Register() {
   return (
@@ -13,6 +15,14 @@ export default function Register() {
       </Head>
 
       <main className='relative z-10 -ml-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2'>
+
+        <Image 
+              className='mx-auto hover:animate-[spin_6s_linear_infinite]'
+              src={Logo}
+              alt='Logo'
+              width={200}
+              height={200}
+            />    
 
         <div>
           <RegisterForm/>
