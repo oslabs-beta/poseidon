@@ -43,7 +43,7 @@ export default function NavBar() {
           {/* LOGIN BUTTON */}
           <Link
             href="/login"
-            className="inline-flex items-center shadow-xl px-3 py-2 border-0 bg-gradient-to-r from-green-400 to-blue-500 hover: from-pink-500 hover:to-yellow-500 hover:scale-125 rounded text-base mt-4 md:mt-0 shadow-lg shadow-blue-500/50"
+            className="inline-flex items-center shadow-xl px-3 py-2 border-0 bg-gradient-to-r from-green-400 to-blue-500 hover:to-teal-500 hover:scale-125 rounded text-base mt-4 md:mt-0 shadow-blue-500/50"
           >
             Login
             <svg

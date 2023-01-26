@@ -9,7 +9,7 @@ export default function Grafana(props: any) {
 			<iframe
 				src={url}
 				className="grow-0"
-				width="650"
+				width="600"
 				height="200"
 				frameBorder="0"
 			></iframe>

@@ -10,7 +10,7 @@ export default function Footer() {
                   className="max-w-lg bg-gray-900 px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center"
                 >
                   <h1
-                    className="text-3xl font-extrabold leading-10 tracking-tight text-left text-white text-center sm:leading-none md:text-6xl text-1xl lg:text-7xl"
+                    className="text-3xl font-extrabold leading-10 tracking-tight text-white text-center sm:leading-none md:text-6xl text-1xl lg:text-7xl"
                   >
                     <span className="inline md:block">Learn More</span>
                     <span
@@ -22,7 +22,7 @@ export default function Footer() {
                   >
                     <Link
                       href=""
-                      className="inline-flex text-white items-center shadow-xl px-3 py-2 border-0 bg-gradient-to-r from-green-400 to-blue-500 hover: from-pink-500 hover:to-yellow-500 hover:scale-125 rounded text-base mt-4 md:mt-0 shadow-lg shadow-blue-500/50"
+                      className="inline-flex text-white items-center shadow-xl px-3 py-2 border-0 bg-gradient-to-r from-green-400 to-blue-500 hover: from-pink-500 hover:to-yellow-500 hover:scale-125 rounded text-base mt-4 md:mt-0 shadow-blue-500/50"
                     >
                       Main Page
                       <svg
@@ -44,10 +44,10 @@ export default function Footer() {
 {/*         
       <hr className="text-white mx-5" /> */}
         <footer className="bg-gray-900 pb-5">
-        <div class="container mx-auto px-6">
-        <div class=" flex flex-col items-center">
-            <div class="sm:w-2/3 text-center py-6">
-                <p class="text-sm text-blue-700 font-bold mb-2">
+        <div className="container mx-auto px-6">
+        <div className=" flex flex-col items-center">
+            <div className="sm:w-2/3 text-center py-6">
+                <p className="text-sm text-blue-700 font-bold mb-2">
                     © 2023 by Pavlove BIOKOU
                 </p>
             </div>

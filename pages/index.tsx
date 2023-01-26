@@ -14,6 +14,7 @@ import Footer from '../components/footer';
 // // export default function Layout({ props: Props }: ReactElement) {
 
 export default function Home() {
+  
   return (
     <div>
       <Head>

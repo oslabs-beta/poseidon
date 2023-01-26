@@ -41,7 +41,7 @@ export default function RegisterForm() {
 	return (
 		<div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
 			<div className="flex-col align-center">
-				<h1 className="flex-col align-center m-3 font-bold text-lg ">
+			<h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">
 					Register
 				</h1>
 				<Formik
