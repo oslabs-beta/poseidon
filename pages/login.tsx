@@ -2,6 +2,8 @@ import Link from 'next/link';;
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import LoginForm from '../components/login';
+import Image from 'next/image';
+import Logo from '../public/LOGO-FINAL.svg'
 
 const Home: NextPage = () => {
   return (
@@ -9,7 +11,6 @@ const Home: NextPage = () => {
     
     >
       <Head>
-        
         <title className='text-slate-200 text-2xl '>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -18,6 +19,14 @@ const Home: NextPage = () => {
       {/* <div className="bg-no-repeat bg-left-top" style={"background-image: url('../public/backgroundImg.png');"}></div> */}
       
         <main className='py-10 relative z-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2'>
+
+          <Image 
+              className='mx-auto hover:animate-[spin_6s_linear_infinite]'
+              src={Logo}
+              alt='Logo'
+              width={200}
+              height={200}
+            />     
           
           <div className='flex flex-row '>
             <LoginForm/>
