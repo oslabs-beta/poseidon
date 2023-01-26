@@ -9,6 +9,7 @@
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
+    "flowbite": "^1.6.3",
     "formik": "^2.2.9",
     "mongoose": "^6.8.4",
     "next": "latest",

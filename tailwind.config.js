@@ -20,6 +20,12 @@ module.exports = {
       { fontFeatureSettings: '"cv11", "ss01"' },
     ],
   },
+  theme: {
+    container: {
+      center: true,
+    },
+  },
+  plugins: [require('flowbite/plugin')], 
   plugins: [],
   // plugins: {
   //   // tailwindcss: { config: './tailwindcss-config.js' },

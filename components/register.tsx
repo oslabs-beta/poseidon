@@ -39,6 +39,17 @@ export default function RegisterForm() {
 	};
 
 	return (
+		<div>
+		<div className='div1 '>
+			<div className='div2 '>
+				<section>
+					<div className="content">
+						<h2 className='font-extrabold'>POSEIDON</h2>
+						<h2 className='font-extrabold'>POSEIDON</h2>
+					</div>
+				</section>
+			</div>
+      	</div>
 		<div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
 			<div className="flex-col align-center">
 			<h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">
@@ -124,7 +135,7 @@ export default function RegisterForm() {
 							/>
 						</div>
             {/* MAY WANT TO HAVE FIELD TO CONFIRM PASSWORD and give feedback on the info marching up */}
-						<div className="flex justify-center">
+						<div className="flex justify-center mt-5">
 							<button
 								type="submit"
 								// disabled={!input}
@@ -133,9 +144,11 @@ export default function RegisterForm() {
 								Register
 							</button>
 						</div>
+						<hr className="w-49 h-0.5 mx-auto bg-gray-100 border-0 rounded md:mt-6 mb-3 mr-3 ml-3 dark:bg-gray-700" />
 					</Form>
 				</Formik>
 			</div>
+		</div>
 		</div>
 	);
 }
