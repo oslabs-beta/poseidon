@@ -2,6 +2,7 @@
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
+import Link from 'next/link';;
 
 interface Values {
   email: string;
@@ -36,6 +37,17 @@ export default function LoginForm() {
   };
 
   return (
+    <div>
+      <div className='div1 '>
+        <div className='div2 '>
+          <section>
+            <div className="content">
+              <h2 className='font-extrabold'>POSEIDON</h2>
+              <h2 className='font-extrabold'>POSEIDON</h2>
+            </div>
+          </section>
+        </div>
+      </div>
     <div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
       <div className='flex-col align-center'>
         <h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">Login</h1>
@@ -81,7 +93,7 @@ export default function LoginForm() {
               <div className='m-2'>
                 <Field 
                   className="
-                  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+                  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
                   "
                   id="password" 
                   name="password" 
@@ -89,20 +101,37 @@ export default function LoginForm() {
                   type="password" 
                 />
               </div>
-              <div className='flex justify-center'>
+              <div className=' flex items-stretch justify-center '>
+              
                 <button 
                   type="submit" 
                   // disabled={!input}
-                  className='bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white'
+                  className='mt-4 p-5 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white'
                   // "
                   //   bg-sky-400 hover:bg-sky-600 hover:scale-125 hover:accent-white text-slate-200 font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed
                   // "
-                >Login</button>
+                  >Login
+                </button>
+                {/* <button 
+                  // disabled={!input}
+                  className='mt-4 ml-5 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white'
+                  // "
+                  //   bg-sky-400 hover:bg-sky-600 hover:scale-125 hover:accent-white text-slate-200 font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed
+                  // "
+                  ><Link className='text-slate-200 self-center'
+                  href="/register"
+                >Sign Up
+                </Link>
+                </button> */}
+                
               </div>
+              <hr className="w-49 h-0.5 mx-auto bg-gray-100 border-0 rounded md:mt-6 mb-3 mr-3 ml-3 dark:bg-gray-700" />
+
           </Form>
         </Formik>
       </div>
       
+    </div>
     </div>
   )
 }
