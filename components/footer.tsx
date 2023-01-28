@@ -5,9 +5,9 @@ export default function Footer() {
     <div >
       {/* <div className='border-4 border-indigo-200 border-t-indigo-500 '></div> */}
       {/* <hr className="h-px p-8 border-0 bg-cyan-600 blur-3xl"></hr> */}
-      <section className="bg-gray-900 ">
+      <section className="bg-slate-900 ">
             <div
-                  className="max-w-lg bg-gray-900 px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center"
+                  className="max-w-lg bg-slate-900 px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center"
                 >
                   <h1
                     className="text-3xl font-bold leading-10 tracking-tight text-white text-center sm:leading-none md:text-6xl text-1xl lg:text-5xl"
@@ -34,7 +34,7 @@ export default function Footer() {
       <hr className="text-white mx-5" /> */}
 
 
-        <footer className="bg-gray-900 pb-5">
+        <footer className="bg-slate-900 pb-5">
         <div className="container mx-auto px-6">
         <div className=" flex flex-col items-center">
             <div className="sm:w-2/3 text-center py-6">
