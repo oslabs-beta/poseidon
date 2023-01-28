@@ -125,7 +125,7 @@ export default function LoginForm() {
                 </button> */}
                 
               </div>
-              <hr className="w-49 h-0.5 mx-auto bg-gray-100 border-0 rounded md:mt-6 mb-3 mr-3 ml-3 dark:bg-gray-700" />
+              <hr className="w-49 h-0.5 mx-auto bg-gray-100 border-0 rounded md:mt-8 mb-3 mr-3 ml-3 dark:bg-gray-700" />
 
           </Form>
         </Formik>

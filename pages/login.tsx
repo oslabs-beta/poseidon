@@ -43,11 +43,11 @@ const Home: NextPage = () => {
             >Sign Up</Link> */}
           </div>
           
-          <div className='flex items-center justify-center'>
+          {/* <div className='flex items-center justify-center'> */}
             {/* <Link className='text-slate-200'
               href="/"
             >Back to home</Link>  */}
-          </div>
+          {/* </div> */}
 
         </main>
 

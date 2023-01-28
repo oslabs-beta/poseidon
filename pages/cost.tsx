@@ -6,7 +6,7 @@ import NavBar from '../components/navbar';
 
 export default function Register() {
   return (
-    <div className='grid h-screen place-items-center bg-slate-900'>
+    <div className=''>
 
       <Head>
         <NavBar />
