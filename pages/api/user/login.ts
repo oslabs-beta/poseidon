@@ -4,7 +4,6 @@ import User from '../../../models/user';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
 
-
 export default async function Login(req: NextApiRequest, res: NextApiResponse) {
   await connectMongo();
   const { method, body } = req;
@@ -16,11 +15,10 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
           const user = await User.findOne({ email });
           // need to handle incorrect password
           if (user && (await bcrypt.compare(password, user.password))) {
-            return res.json({user});
-          } else {
             return res.json({ user });
+          } else {
+            return res.json({ message: 'User not authorized.' });
           }
-
         } catch (reason) {
           return res.status(500).json({ login: `Error in GET. ${reason}` });
         }
