@@ -8,9 +8,9 @@ metadata:
 spec:
   alerting:
     alertmanagers:
-    - name: alertmanager-main
-      namespace: default
-      port: web
+      - name: alertmanager-main
+        namespace: default
+        port: web
   image: quay.io/prometheus/prometheus:v2.22.1
   nodeSelector:
     kubernetes.io/os: linux
@@ -35,13 +35,13 @@ spec:
   serviceMonitorSelector: {}
   version: v2.22.1
   remoteWrite:
-  - url: "https://prometheus-us-central1.grafana.net/api/prom/push"
-    basicAuth:
+    - url: 'https://prometheus-us-central1.grafana.net/api/prom/push'
+      basicAuth:
         username:
           name: kubepromsecret
-          key: '740869'
+          key: '750773'
         password:
           name: kubepromsecret
-          key: eyJrIjoiSWxEY0ZCS0FYZjdwOU1OMGtUc2dUc2Y0NkhFTUw2NkQiLCJuIjoiUG9zZWlkb24iLCJpZCI6MX0=
-  replicaExternalLabelName: "__replica__"
-  externalLabels: {cluster: "test"}
+          key: 'eyJrIjoiOWVlMDRiMWI5NTNlYWM4ODY5MTQ5Zjk4MTE2YjRiNWJiYmEwMDQ0OSIsIm4iOiJQb3NlZGlvbiIsImlkIjo3ODQ5NjJ9'
+  replicaExternalLabelName: '__replica__'
+  externalLabels: { cluster: 'test' }
