@@ -4,6 +4,7 @@ import Image from 'next/image';
 import DashboardContainer from '../components/dashboard/dashboardContainer';
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
+import { useSession } from 'next-auth/react';
 
 // for reference:
 // // // type Props = {
@@ -14,6 +15,8 @@ import Footer from '../components/footer';
 // // export default function Layout({ props: Props }: ReactElement) {
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <div>
       <Head>
