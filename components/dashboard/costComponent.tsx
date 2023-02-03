@@ -33,10 +33,11 @@ export default function CostComponent({ data }: any) {
     refinedData = averageCost;
     return;
   }
+
   getAverages(data);
   return (
     <div className="grid h-screen place-items-center bg-slate-900  w-full shadow-inner body ">
-      <div className=" justify-center items-center flex flex-row mt-12 ">
+      <div className=" justify-center items-center flex flex-row ">
         <a
           href="#"
           className="block max-w-sm p-7 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 "
@@ -89,7 +90,6 @@ export default function CostComponent({ data }: any) {
               </label>
             </div>
             <button
-              // disabled={!input}
               className="mx-auto bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white"
             >
               Calculate
@@ -119,7 +119,7 @@ export default function CostComponent({ data }: any) {
                 >
                   CPU Cost
                 </th>
-                <td className="px-6 py-4">`${refinedData.totalCPU}`</td>
+                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalCPU).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -128,7 +128,7 @@ export default function CostComponent({ data }: any) {
                 >
                   RAM Cost
                 </th>
-                <td className="px-6 py-4">`${refinedData.totalRAM}`</td>
+                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalRAM).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -137,7 +137,7 @@ export default function CostComponent({ data }: any) {
                 >
                   GPU Cost
                 </th>
-                <td className="px-6 py-4">`${refinedData.totalGPU}`</td>
+                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalGPU).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -146,7 +146,7 @@ export default function CostComponent({ data }: any) {
                 >
                   Load Balancer Cost
                 </th>
-                <td className="px-6 py-4">`${refinedData.totalloadBalancerCost:}`</td>
+                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalloadBalancerCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -155,7 +155,7 @@ export default function CostComponent({ data }: any) {
                 >
                   Network Cost
                 </th>
-                <td className="px-6 py-4">`${refinedData.totalNetworkCost}`</td>
+                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalNetworkCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -164,7 +164,7 @@ export default function CostComponent({ data }: any) {
                 >
                   PV Cost
                 </th>
-                <td className="px-6 py-4">`${refinedData.totalPVCost}`</td>
+                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalPVCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -173,23 +173,23 @@ export default function CostComponent({ data }: any) {
                 >
                   Shared Cost
                 </th>
-                <td className="px-6 py-4">`${refinedData.totalCost}`</td>
+                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalSharedCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
               <tr className="bg-white dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-6 py-4 whitespace-nowrap dark:text-white"
                 >
-                  Total Cost
+                  <p className='text-sky-500 font-bold '>Total Cost:</p>
                 </th>
-                <td className="px-6 py-4">`${data.totalCost}`</td>
+                <td className="px-6 py-4 font-bold text-sky-500">${refinedData.totalCPU ? parseFloat(refinedData.totalCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <div>Your Estimated Cluster cost is:</div>
-      <Footer />
+      {/* <div>Your Estimated Cluster cost is:</div> */}
+      {/* <Footer /> */}
     </div>
   );
 }
