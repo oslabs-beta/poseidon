@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../public/LOGO-FINAL.svg'
-
+import LoginButton from './login-btn';
 
 export default function NavBar() {
   return (
@@ -39,14 +39,15 @@ export default function NavBar() {
             </a>
 
             {/* Cost analysis Link */}
-            <a href="/cost" className=" ml-5 mr-5 mt-1 text-xl hover:text-sky-500 font-medium group text-slate-500 transition duration-300">
+            <a href="/cost" className="ml-5 mr-5 mt-1 text-xl hover:text-sky-500 font-medium group text-slate-500 transition duration-300">
               Cost Analysis
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
             </a>
           </nav>
           {/* extra: based on cookies determine Login or Register */}
           {/* LOGIN BUTTON */}
-          <Link
+          <LoginButton/>
+          {/* <Link
             href="/login"
             className='group relative mr-10 h-12 w-40 overflow-hidden rounded-lg bg-sky-500 text-lg shadow flex items-center justify-center '
           >
@@ -64,7 +65,7 @@ export default function NavBar() {
               
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg> */}
-          </Link>
+          {/* </Link> */}
         </div>
       </header>
     </>
