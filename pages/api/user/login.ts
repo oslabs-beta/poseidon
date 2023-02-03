@@ -13,6 +13,7 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
       case 'POST':
         try {
           const user = await User.findOne({ email });
+          
           // need to handle incorrect password
           if (user && (await bcrypt.compare(password, user.password))) {
             return res.json({ user });

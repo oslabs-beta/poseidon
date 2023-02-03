@@ -4,6 +4,10 @@ import Head from 'next/head';
 import LoginForm from '../components/login';
 import Image from 'next/image';
 import Logo from '../public/LOGO-FINAL.svg'
+import LoginButton from '../components/login-btn';
+
+
+// not using this anymore
 
 const Home: NextPage = () => {
   return (
@@ -29,7 +33,10 @@ const Home: NextPage = () => {
             />     
           
           <div className='flex flex-row '>
+            {/* took away our login form for now */}
             <LoginForm/>
+            {/* <LoginButton/> */}
+
           </div>
           
           <div className='flex items-center justify-center'>
