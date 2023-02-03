@@ -1,11 +1,11 @@
-export const name: string = 'IeOCqpTVk';
+export const name: string = 'Jd5xvc04z';
 export const dashUrls: string[] = [
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674591611424&to=1674595211424&panelId=2`,
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674591663279&to=1674595263279&panelId=3`,
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674591700520&to=1674595300520&panelId=4`,
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674591741986&to=1674595341986&panelId=5`,
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674591795402&to=1674595395402&panelId=6`,
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674593355282&to=1674596955282&theme=dark&panelId=7`,
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674593445278&to=1674597045278&panelId=8`,
-  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1674593500146&to=1674597100146&panelId=9`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354386802&to=1675357986803&panelId=2`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354577976&to=1675358177976&panelId=3`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354601225&to=1675358201225&panelId=4`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354627652&to=1675358227652&panelId=5`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354653850&to=1675358253850&panelId=6`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354691372&to=1675358291372&panelId=7`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354724116&to=1675358324116&panelId=8`,
+  `http://localhost:3300/d-solo/${name}/node-exporter-nodes?orgId=1&refresh=30s&from=1675354743067&to=1675358343067&panelId=9`,
 ];

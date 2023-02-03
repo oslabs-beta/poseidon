@@ -14,7 +14,6 @@ import Footer from '../components/footer';
 // // export default function Layout({ props: Props }: ReactElement) {
 
 export default function Home() {
-  
   return (
     <div>
       <Head>
@@ -26,3 +25,9 @@ export default function Home() {
     </div>
   );
 }
+
+// export function getServerSideProps() {
+//   return {
+//     props: { message: 'Welcome to the About Page' },
+//   };
+// }
