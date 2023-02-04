@@ -5,6 +5,8 @@ import CostComponent from '../components/dashboard/costComponent';
 import NavBar from '../components/navbar';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]';
 
 export default function Cost({ data }: any) {
   // export default function Cost({
@@ -26,8 +28,30 @@ export default function Cost({ data }: any) {
     // </SessionProvider>
   );
 }
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       session: await getServerSession(
+//         context.req,
+//         context.res,
+//         authOptions
+//       ),
+//     },
+//   }
+// }
+export async function getServerSideProps(context: any) {
+  // get cookie first!
+  const session = await getServerSession(context.req, context.res, authOptions);
 
-export async function getServerSideProps() {
+  // if no session, just go ahead and redirect
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/signin',
+        permanent: false,
+      },
+    }
+  }
   //in terminal, type kubectl get service -n kubecost and put external ip in kubecostIP value here:
   // const kubecostIP = '127.0.0.1';
   const URL = `http://127.0.0.1:9090/model/allocation?window=7d&aggregate=cluster`;
@@ -39,7 +63,7 @@ export async function getServerSideProps() {
 
   if (parsed) {
     const parsedArr = parsed.data;
-    function getProps(parsedArr: []) {
+    async function getProps(parsedArr: []) {
       let totalCPU = 0;
       let totalRAM = 0;
       let totalGPU = 0;
@@ -86,10 +110,20 @@ export async function getServerSideProps() {
 
       // NodeHourlyCost = NORMALIZED_GPU_PRICE * # of GPUs + NORMALIZED_CPU_PRICE * # of CPUs + NORMALIZED_RAM_PRICE * # of RAM GB
 
-      return { props: { data } };
+      return { props: 
+        { 
+          data,
+          session 
+        }
+      } 
     }
     return getProps(parsedArr);
   } else {
-    console.log('error! no data retrieved from kubecost!!');
+    // was a console log here about stuff not working
+    return {
+      props: {
+        session
+      },
+    }
   }
 }
