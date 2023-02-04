@@ -2,17 +2,12 @@
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { useRouter } from 'next/navigation';
 import * as Yup from "yup";
-
-interface Values {
-	email: string;
-	password: string;
-	firstName: string;
-	lastName: string;
-}
+import { Input } from './input';
 
 export default function RegisterForm() {
 	const router = useRouter();
-	const loginUser = async (body: Values) => {
+
+	const loginUser = async (body: RegisterValues) => {
 		try {
 			const res = await fetch(`/api/user/register`, {
 				method: 'POST',
@@ -40,16 +35,7 @@ export default function RegisterForm() {
 
 	return (
 		<div>
-		<div className='div1 '>
-			<div className='div2 '>
-				<section>
-					<div className="content">
-						<h2 className='font-extrabold'>POSEIDON</h2>
-						<h2 className='font-extrabold'>POSEIDON</h2>
-					</div>
-				</section>
-			</div>
-      	</div>
+
 		<div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
 			<div className="flex-col align-center">
 			<h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">
@@ -61,79 +47,97 @@ export default function RegisterForm() {
 						password: '',
 						lastName: '',
 						firstName: '',
+						changePassword: '',
 					}}
           validationSchema={Yup.object({
             email: Yup.string()
               .min(5, "Must be at least 5 characters")
-              .required("Required"),
+							.max(30, 'Must be 30 characters or less')
+              .required("Required")
+            	.email('Invalid email address'),
             password: Yup.string()
               .min(5, "Must be at least 5 characters")
+							.max(30, 'Must be 30 characters or less')
               .required("Required"),
+						changePassword: Yup.string().when("password", {
+							is: (val: string) => (val && val.length > 0 ? true : false),
+							then: Yup.string().oneOf(
+								[Yup.ref("password")],
+								"Both password need to be the same"
+							)
+						}),
             lastName: Yup.string()
-              .required("Required"),
+              .required("Required")
+							.max(30, 'Must be 30 characters or less'),
             firstName: Yup.string()
-              .required("Required"),
+              .required("Required")
+							.max(30, 'Must be 30 characters or less'),
           })}
+
+					// unsure about this error
 					onSubmit={(
-						values: Values,
-						{ setSubmitting }: FormikHelpers<Values>
+						values: RegisterValues,
+						{ setSubmitting }: FormikHelpers<RegisterValues>
 					) => {
-						loginUser(values);
+						loginUser({
+							email: values.email,
+							password: values.password,
+							firstName: values.firstName,
+							lastName: values.lastName,
+						});
 						setSubmitting(false);
-						// setTimeout(() => {
-						//   alert(JSON.stringify(values, null, 2));
-						//   setSubmitting(false);
-						// }, 500);
 					}}
 				>
 					<Form>
-						<div className="m-2">
-							<Field
-								className="
-                bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
-                "
-								id="firstName"
+						{/* first name input */}
+						<div>
+							<Input
+                id="firstName"
 								name="firstName"
 								placeholder="First Name"
 								aria-describedby="usernameHelp"
-							/>
+              />
 						</div>
 
-						<div className="m-2">
-							<Field
-								className="
-                bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
-                "
+						{/* last name input */}
+						<div>
+							<Input
 								id="lastName"
 								name="lastName"
 								placeholder="Last Name"
 								aria-describedby="usernameHelp"
-							/>
+              />
 						</div>
 
-						<div className="m-2">
-							<Field
-								className="
-                bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
-                "
+						{/* email input */}
+						<div>
+							<Input
 								id="email"
 								name="email"
 								placeholder="Email"
 								aria-describedby="usernameHelp"
-							/>
+              />
 						</div>
 
-						<div className="m-2">
-							<Field
-								className="
-                bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
-                "
+						{/* password input */}
+						<div>
+							<Input
 								id="password"
 								name="password"
 								placeholder="Password"
 								type="password"
-							/>
+              />
 						</div>
+
+						<div>
+							<Input
+								id="changePassword"
+								name="changePassword"
+								placeholder="Confirm Password"
+								type="password"
+              />
+						</div>
+						
             {/* MAY WANT TO HAVE FIELD TO CONFIRM PASSWORD and give feedback on the info marching up */}
 						<div className="flex justify-center mt-5">
 							<button
