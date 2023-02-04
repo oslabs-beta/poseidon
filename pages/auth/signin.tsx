@@ -19,7 +19,12 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
       </Head>
 
       <Formik
-        initialValues={{ email: '', password: '', tenantKey: '' }}
+        initialValues={{ 
+          email: '', 
+          password: '', 
+          tenantKey: '' 
+        }}
+
         validationSchema={Yup.object({
           email: Yup.string()
             .max(30, 'Must be 30 characters or less')
@@ -29,6 +34,7 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
             .max(30, 'Must be 30 characters or less')
             .required('Please enter your password'),
         })}
+
         onSubmit={async (values, { setSubmitting }) => {
           const res: any = await signIn('credentials', {
             redirect: false,
@@ -59,6 +65,7 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                   width={200}
                   height={200}
                 />
+
                 <div className="div1 ">
                   <div className="div2 ">
                     <section>
@@ -98,7 +105,7 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                     />
                   </label>
 
-                  <div className="text-red-600 text-sm">
+                  <div className="text-red-500 text-sm animate-pulse">
                     <ErrorMessage name="email" />
                   </div>
                 </div>
@@ -120,10 +127,11 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                     />
                   </label>
 
-                  <div className="text-red-600 text-sm">
+                  <div className="text-red-500 text-sm animate-pulse">
                     <ErrorMessage name="password" />
                   </div>
                 </div>
+
                 <div className="flex items-center justify-center">
                   <button
                     type="submit"
@@ -132,6 +140,8 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                     {formik.isSubmitting ? 'Please wait...' : 'Sign In'}
                   </button>
                 </div>
+                
+                {/* SWITCH TO SIGN UP PAGE */}
                 <div className="flex items-center justify-center pt-2">
                   <span>
                     <p className="text-slate-500 mr-3">
@@ -147,6 +157,7 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </a>
                 </div>
+
               </div>
             </div>
           </form>
