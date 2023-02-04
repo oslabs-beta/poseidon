@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev1": "npx next dev -p 3500",
+    "port": "npx next dev -p 3500",
     "build": "next build",
     "start": "next start"
   },
