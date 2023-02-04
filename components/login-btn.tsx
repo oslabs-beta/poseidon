@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 //new client side login button that can be used anywhere to login
 
 export default function LoginButton() {
-  const { data: session } = useSession()
+  const { data: session }:any = useSession()
 
   if (session) {
     return (

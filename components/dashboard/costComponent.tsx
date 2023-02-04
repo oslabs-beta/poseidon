@@ -1,44 +1,70 @@
 import Footer from '../footer';
 import { useState, useEffect } from 'react';
+import useSWR from 'swr';
+
+// const fetcher = ()
 
 export default function CostComponent({ data }: any) {
   let refinedData: any = '';
-  // https://docs.kubecost.com/using-kubecost/getting-started/cost-allocation
+  let tableVals: any = '';
 
-  // This is DATA after all our friggin work:  {
-  // totalCPU: 11.35361,
-  // totalRAM: 0,
-  // totalGPU: 0,
-  // totalloadBalancerCost: 0,
-  // totalNetworkCost: 0,
-  // totalPVCost: 0.25128,
-  // totalCost: 13.93826,
-  // totalSharedCost: 0,
-  // totalDays: 2
-
-  //make a function to generate totals for CPU, RAM, LoadBalance, and total from data
-  //make formula that takes data props and calcs the AVERAGE cost of each component per day using the totalDays key/value inside data
-  function getAverages(data: any) {
-    //take totalDays
-    const totalDays = data.totalDays;
-    //create new set of variables to store updated projected costs for each val in data
-    const averageCost = {};
-
-    //iterate over the rest of data
-    for (const key in data) {
-      //calc the average cost/day/component
-      averageCost[key] = (data[key] / totalDays) * 30;
+  function makeTableVals(data: any): void {
+    if (data) {
+      const newTableVals = [];
+      for (const key in data) {
+        if (data[key] !== 0 && key !== 'totalDays') {
+          newTableVals.push(
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {key === 'Total Cost' ? (
+                  <p className="text-sky-500 font-bold ">{key}:</p>
+                ) : (
+                  key
+                )}
+              </th>
+              <td
+                className={
+                  key === 'Total Cost'
+                    ? 'px-6 py-4 font-bold text-sky-500'
+                    : 'px-6 py-4'
+                }
+              >
+                ${data[key].toFixed(2)}
+              </td>
+            </tr>
+          );
+        }
+      }
+      tableVals = newTableVals;
     }
-    // console.log('This is averageCost', averageCost);
-    refinedData = averageCost;
-    return;
+  }
+  function getAverages(data: any) {
+    if (data) {
+      //take totalDays
+      const totalDays = data.totalDays;
+      //create new set of variables to store updated projected costs for each val in data
+      const averageCost: any = {};
+
+      //iterate over the rest of data
+      for (const key in data) {
+        //calc the average cost/day/component
+        averageCost[key] = (data[key] / totalDays) * 30;
+      }
+      // console.log('This is averageCost', averageCost);
+      refinedData = averageCost;
+      return;
+    }
   }
 
   getAverages(data);
+  makeTableVals(refinedData);
   return (
     <div className="grid h-screen place-items-center bg-slate-900  w-full shadow-inner body ">
       <div className=" justify-center items-center flex flex-row ">
-        <a
+        {/* <a
           href="#"
           className="block max-w-sm p-7 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 "
         >
@@ -93,7 +119,7 @@ export default function CostComponent({ data }: any) {
               Calculate
             </button>
           </div>
-        </a>
+        </a> */}
 
         <div className="ml-6 relative overflow-x-auto border border-gray-600 rounded-lg">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -101,7 +127,7 @@ export default function CostComponent({ data }: any) {
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Cost <br />
-                  Catogory
+                  Category
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Total Cost <br />
@@ -110,7 +136,7 @@ export default function CostComponent({ data }: any) {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              {/* <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -221,12 +247,32 @@ export default function CostComponent({ data }: any) {
                     ? parseFloat(refinedData.totalCost).toFixed(2)
                     : 'Not Connected to Kubecost'}
                 </td>
-              </tr>
+              </tr> */}
+              {tableVals ? (
+                tableVals
+              ) : (
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <h2>
+                      You Need To Connect To Kubecost Before You Can See
+                      Expected Cluster Costs
+                    </h2>
+                  </th>
+                  <td className="px-6 py-4">
+                    <h2>
+                      You Need To Connect To Kubecost Before You Can See
+                      Expected Cluster Costs
+                    </h2>
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
       </div>
-      {/* <div>Your Estimated Cluster cost is:</div> */}
       {/* <Footer /> */}
     </div>
   );
