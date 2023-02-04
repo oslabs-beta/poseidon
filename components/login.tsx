@@ -12,10 +12,6 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-interface Values {
-  email: string;
-  password: string;
-}
 
 // not using this anymore
 
