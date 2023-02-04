@@ -3,18 +3,27 @@ import Link from 'next/link';
 // import RegisterForm from '../components/register';
 import CostComponent from '../components/dashboard/costComponent';
 import NavBar from '../components/navbar';
+import { SessionProvider } from 'next-auth/react';
+import type { AppProps } from 'next/app';
 
 export default function Cost({ data }: any) {
-  // console.log('This is data within Cost page', data);
+  // export default function Cost({
+  //   Component,
+  //   pageProps: { session, ...pageProps },
+  // }: AppProps) {
+  //   // console.log('This is data within Cost page', data);
 
   return (
-    <div className="">
+    // <SessionProvider session={session}>
+    <div>
       <Head>
-        <NavBar />
         <title>Cost Analysis</title>
-        <CostComponent data={data} />
       </Head>
+
+      <NavBar />
+      <CostComponent data={data} />
     </div>
+    // </SessionProvider>
   );
 }
 

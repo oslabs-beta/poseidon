@@ -2,7 +2,7 @@ import Footer from '../footer';
 import { useState, useEffect } from 'react';
 
 export default function CostComponent({ data }: any) {
-  let refinedData:any = '';
+  let refinedData: any = '';
   // https://docs.kubecost.com/using-kubecost/getting-started/cost-allocation
 
   // This is DATA after all our friggin work:  {
@@ -89,9 +89,7 @@ export default function CostComponent({ data }: any) {
                 Memory in mbs
               </label>
             </div>
-            <button
-              className="mx-auto bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white"
-            >
+            <button className="mx-auto bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white">
               Calculate
             </button>
           </div>
@@ -119,7 +117,12 @@ export default function CostComponent({ data }: any) {
                 >
                   CPU Cost
                 </th>
-                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalCPU).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalCPU).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -128,7 +131,12 @@ export default function CostComponent({ data }: any) {
                 >
                   RAM Cost
                 </th>
-                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalRAM).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalRAM).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -137,7 +145,12 @@ export default function CostComponent({ data }: any) {
                 >
                   GPU Cost
                 </th>
-                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalGPU).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalGPU).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -146,7 +159,12 @@ export default function CostComponent({ data }: any) {
                 >
                   Load Balancer Cost
                 </th>
-                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalloadBalancerCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalloadBalancerCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -155,7 +173,12 @@ export default function CostComponent({ data }: any) {
                 >
                   Network Cost
                 </th>
-                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalNetworkCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalNetworkCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -164,7 +187,12 @@ export default function CostComponent({ data }: any) {
                 >
                   PV Cost
                 </th>
-                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalPVCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalPVCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
@@ -173,16 +201,26 @@ export default function CostComponent({ data }: any) {
                 >
                   Shared Cost
                 </th>
-                <td className="px-6 py-4">${refinedData.totalCPU ? parseFloat(refinedData.totalSharedCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalSharedCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
                   className="px-6 py-4 whitespace-nowrap dark:text-white"
                 >
-                  <p className='text-sky-500 font-bold '>Total Cost:</p>
+                  <p className="text-sky-500 font-bold ">Total Cost:</p>
                 </th>
-                <td className="px-6 py-4 font-bold text-sky-500">${refinedData.totalCPU ? parseFloat(refinedData.totalCost).toFixed(2) : 'Not Connected to Kubecost'}</td>
+                <td className="px-6 py-4 font-bold text-sky-500">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
             </tbody>
           </table>
