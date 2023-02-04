@@ -9,10 +9,12 @@ export default function Register() {
     <div className=''>
 
       <Head>
-        <NavBar />
-        <title>Cost Analysis</title>
-        <CostComponent />
+      <title>Cost Analysis</title>
       </Head>
+        <NavBar />
+
+        <CostComponent />
+
 
     </div>
   );
