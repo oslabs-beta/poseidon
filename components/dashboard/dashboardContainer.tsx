@@ -1,24 +1,40 @@
 import CostComponent from './costComponent';
 import Grafana from './grafana';
 import { dashUrls } from '../../constants';
+import Router from 'next/router';
 
 export default function DashboardContainer() {
-	const visualizers = dashUrls.map((url, i) => <Grafana key={i} url={url} />);
+  const visualizers = dashUrls.map((url, i) => <Grafana key={i} url={url} />);
+  // const { data: session } = useSession();
+  // if (!session) {
+  //   setTimeout(() => {
+  //     signIn();
+  //   }, '1000');
+  // }
 
-	// How to retrieve the unique identifier for dashboard -> https://grafana.com/docs/grafana/latest/developers/http_api/dashboard/
-	// GET /api/dashboards/uid/:uid
-	// Will return the dashboard given the dashboard unique identifier (uid).
-	// Information about the unique identifier of a folder containing the requested dashboard might be found in the metadata.
+  return (
+    <div>
+      <section className="bg-slate-900 flex flex-wrap text-gray-600 body-font w-full shadow-inner body">
+        <div className="container flex flex-wrap justify-between mx-auto w-30 px-12 py-5">
+          {visualizers}
+        </div>
+      </section>
+    </div>
+  );
+  // return (
+  //   <div className="bg-red-400 content-center animate-pulse">
+  //     <div className="content-center">
+  //       <h1 className="text-gray-900 text-center">
+  //         You are not authorized to see this content
+  //       </h1>
+  //     </div>
+  //   </div>
+  // );
 
-	// Using d3 with grafana -> https://grafana.com/tutorials/build-a-panel-plugin-with-d3/
+  // How to retrieve the unique identifier for dashboard -> https://grafana.com/docs/grafana/latest/developers/http_api/dashboard/
+  // GET /api/dashboards/uid/:uid
+  // Will return the dashboard given the dashboard unique identifier (uid).
+  // Information about the unique identifier of a folder containing the requested dashboard might be found in the metadata.
 
-	return (
-		<div>
-			<section className="bg-slate-900 flex flex-wrap text-gray-600 body-font w-full shadow-inner body">
-				<div className="container flex flex-wrap justify-between mx-auto w-30 px-12 py-5">
-					{visualizers}
-				</div>
-			</section>
-		</div>
-	);
+  // Using d3 with grafana -> https://grafana.com/tutorials/build-a-panel-plugin-with-d3/
 }
