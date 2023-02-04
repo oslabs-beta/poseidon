@@ -21,7 +21,8 @@ export default function Cost({ data }: any) {
 export async function getServerSideProps() {
   //in terminal, type kubectl get service -n kubecost and put external ip in kubecostIP value here:
   // const kubecostIP = '127.0.0.1';
-  const URL = `http://127.0.0.1:9090/model/allocation?window=15d&aggregate=cluster`;
+  const URL = `http://127.0.0.1:9090/model/allocation?window=7d&aggregate=cluster`;
+  // const URL = `http://localhost:9090/model/allocation?window=7d&aggregate=cluster`;
   const response = await fetch(URL);
   const parsed = await response.json();
 
@@ -45,9 +46,9 @@ export async function getServerSideProps() {
         for (const key in metricObject) {
           if (key === 'cpuCost') totalCPU += metricObject[key];
           if (key === 'gpuCost') totalGPU += metricObject[key];
+          if (key === 'ramCost') totalRAM += metricObject[key];
           if (key === 'networkCost') totalNetworkCost += metricObject[key];
-          if (key === 'loadBalanceerCost')
-            totalloadBalancerCost += metricObject[key];
+          if (key === 'loadBalancerCost') totalloadBalancerCost += metricObject[key];
           if (key === 'pvCost') totalPVCost += metricObject[key];
           if (key === 'totalCost') totalCost += metricObject[key];
           if (key === 'sharedCost') totalSharedCost += metricObject[key];

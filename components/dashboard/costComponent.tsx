@@ -29,7 +29,7 @@ export default function CostComponent({ data }: any) {
       //calc the average cost/day/component
       averageCost[key] = (data[key] / totalDays) * 30;
     }
-    console.log('This is averageCost', averageCost);
+    // console.log('This is averageCost', averageCost);
     refinedData = averageCost;
     return;
   }
