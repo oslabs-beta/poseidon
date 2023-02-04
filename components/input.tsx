@@ -15,7 +15,7 @@ export const Input = ({ name, label, ...props }: any) => {
       <ErrorMessage
         name={field.name}
         component="div"
-        className="text-red-500 text-xs animate-pulse"
+        className="text-red-500 text-xs animate-pulse ml-3"
       />
     </div>
   );

@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import * as Yup from "yup";
 import { Input } from './input';
 
-
 export default function RegisterForm() {
 	const router = useRouter();
+
 	const loginUser = async (body: RegisterValues) => {
 		try {
 			const res = await fetch(`/api/user/register`, {
@@ -35,16 +35,7 @@ export default function RegisterForm() {
 
 	return (
 		<div>
-		<div className='div1 '>
-			<div className='div2 '>
-				<section>
-					<div className="content">
-						<h2 className='font-extrabold'>POSEIDON</h2>
-						<h2 className='font-extrabold'>POSEIDON</h2>
-					</div>
-				</section>
-			</div>
-      	</div>
+
 		<div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
 			<div className="flex-col align-center">
 			<h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">
@@ -56,6 +47,7 @@ export default function RegisterForm() {
 						password: '',
 						lastName: '',
 						firstName: '',
+						changePassword: '',
 					}}
           validationSchema={Yup.object({
             email: Yup.string()
@@ -67,6 +59,13 @@ export default function RegisterForm() {
               .min(5, "Must be at least 5 characters")
 							.max(30, 'Must be 30 characters or less')
               .required("Required"),
+						changePassword: Yup.string().when("password", {
+							is: (val: string) => (val && val.length > 0 ? true : false),
+							then: Yup.string().oneOf(
+								[Yup.ref("password")],
+								"Both password need to be the same"
+							)
+						}),
             lastName: Yup.string()
               .required("Required")
 							.max(30, 'Must be 30 characters or less'),
@@ -74,16 +73,19 @@ export default function RegisterForm() {
               .required("Required")
 							.max(30, 'Must be 30 characters or less'),
           })}
+
+					// unsure about this error
 					onSubmit={(
 						values: RegisterValues,
 						{ setSubmitting }: FormikHelpers<RegisterValues>
 					) => {
-						loginUser(values);
+						loginUser({
+							email: values.email,
+							password: values.password,
+							firstName: values.firstName,
+							lastName: values.lastName,
+						});
 						setSubmitting(false);
-						// setTimeout(() => {
-						//   alert(JSON.stringify(values, null, 2));
-						//   setSubmitting(false);
-						// }, 500);
 					}}
 				>
 					<Form>
@@ -123,6 +125,15 @@ export default function RegisterForm() {
 								id="password"
 								name="password"
 								placeholder="Password"
+								type="password"
+              />
+						</div>
+
+						<div>
+							<Input
+								id="changePassword"
+								name="changePassword"
+								placeholder="Confirm Password"
 								type="password"
               />
 						</div>

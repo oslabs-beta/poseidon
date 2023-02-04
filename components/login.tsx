@@ -37,7 +37,7 @@ const Input = ({ name, label, ...props }: any) => {
 export default function LoginForm() {
   const [error, setError] = useState('');
   const router = useRouter();
-  const loginUser = async (body: Values) => {
+  const loginUser = async (body: LoginValues) => {
     try {
       const res = await fetch(`/api/user/login`, {
         method: 'POST',
@@ -98,8 +98,8 @@ export default function LoginForm() {
                 .required('Required'),
             })}
             onSubmit={(
-              values: Values,
-              { setSubmitting }: FormikHelpers<Values>
+              values: LoginValues,
+              { setSubmitting }: FormikHelpers<LoginValues>
             ) => {
               console.log('onSubmit', values);
               loginUser(values);
