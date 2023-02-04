@@ -19,7 +19,7 @@ interface Values {
 
 // not using this anymore
 
-const Input = ({ name, label, ...props }) => {
+const Input = ({ name, label, ...props }: any) => {
   const [field, meta] = useField(name);
   return (
     <div className="m-2">

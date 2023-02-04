@@ -1,5 +1,13 @@
 'use client';
-import { Formik, Field, Form, FormikHelpers } from 'formik';
+import {
+  Formik,
+  Field,
+  Form,
+  FormikHelpers,
+  useField,
+  ErrorMessage,
+} from 'formik';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import * as Yup from "yup";
 
@@ -8,35 +16,61 @@ interface Values {
 	password: string;
 	firstName: string;
 	lastName: string;
+	changePassword?: string;
 }
+
+const Input = ({ name, label, ...props }: any) => {
+  const [field, meta] = useField(name);
+  return (
+    <div className="m-2">
+      <input
+        className={`${
+          meta.error && meta.touched ? 'border-red-500' : ''
+        } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+        {...field}
+        {...props}
+      />
+      <ErrorMessage
+        name={field.name}
+        component="div"
+        className="text-red-500 text-xs"
+      />
+    </div>
+  );
+};
+
+export default function LoginForm() {
+  const [error, setError] = useState('');
+  const router = useRouter();
+  const loginUser = async (body: Values) => {
+    try {
+      const res = await fetch(`/api/user/login`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+      const { user } = await res.json();
+      // if data present - redirect to dashboard
+      if (user) {
+        setError('');
+        router.push(`/`);
+      } else {
+        // user is not in the db - route to sign up page
+        // NEED TO ADD MESSAGE EXPLAINING WHAT TO DO + WHY
+        setError('error');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 export default function RegisterForm() {
 	const router = useRouter();
-	const loginUser = async (body: Values) => {
-		try {
-			const res = await fetch(`/api/user/register`, {
-				method: 'POST',
-				headers: {
-					Accept: 'application.json',
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(body),
-			});
-			// if data present - redirect to dashboard
-			const { user } = await res.json();
-			// if data present - redirect to dashboard
-			if (user) {
-        // may need to route to login to confirm they know their information
-				router.push(`/`);
-			} else {
-				// user is not in the db - route to sign up page
-				// NEED TO ADD MESSAGE EXPLAINING WHAT TO DO + WHY
-				router.push(`/login`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
+
+	
 
 	return (
 		<div>
@@ -61,6 +95,7 @@ export default function RegisterForm() {
 						password: '',
 						lastName: '',
 						firstName: '',
+						changePassword: "",
 					}}
           validationSchema={Yup.object({
             email: Yup.string()
@@ -73,6 +108,14 @@ export default function RegisterForm() {
               .required("Required"),
             firstName: Yup.string()
               .required("Required"),
+						changePassword: Yup.string()
+							.when("password", {
+								is: (val: string) => (val && val.length > 0 ? true : false),
+								then: Yup.string().oneOf(
+									[Yup.ref("password")],
+									"Both password need to be the same"
+								)
+						})
           })}
 					onSubmit={(
 						values: Values,
@@ -134,8 +177,26 @@ export default function RegisterForm() {
 								type="password"
 							/>
 						</div>
+
+						<div className="m-2">
+							<Field
+								className="
+                bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+                "
+								id="change:Password"
+								name="changePassword"
+								// placeholder="Password"
+								type="changePassword"
+							/>
+						</div>
+
+						{/* <span className="error" style={{ color: "red" }}>
+              {errors.changepassword}
+            </span> */}
+
             {/* MAY WANT TO HAVE FIELD TO CONFIRM PASSWORD and give feedback on the info marching up */}
 						<div className="flex justify-center mt-5">
+
 							<button
 								type="submit"
 								// disabled={!input}
@@ -143,6 +204,7 @@ export default function RegisterForm() {
 							>
 								Register
 							</button>
+
 						</div>
 						<hr className="w-49 h-0.5 mx-auto bg-gray-100 border-0 rounded md:mt-6 mb-3 mr-3 ml-3 dark:bg-gray-700" />
 					</Form>
