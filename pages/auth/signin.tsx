@@ -4,15 +4,16 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-
-export default function SignIn({ csrfToken }): JSX.Element {
+import Image from 'next/image';
+import Logo from '../../public/LOGO-FINAL.svg';
+export default function SignIn({ csrfToken }: any): JSX.Element {
   const router = useRouter();
   const [error, setError] = useState(null);
 
   return (
     <>
       <Head>
-        <title className='text-slate-200 text-2xl '>Sign In</title>
+        <title className="text-slate-200 text-2xl ">Sign In</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/LogoPNG.png" />
       </Head>
@@ -27,9 +28,9 @@ export default function SignIn({ csrfToken }): JSX.Element {
           password: Yup.string()
             .max(30, 'Must be 30 characters or less')
             .required('Please enter your password'),
-         })}
+        })}
         onSubmit={async (values, { setSubmitting }) => {
-          const res = await signIn('credentials', {
+          const res: any = await signIn('credentials', {
             redirect: false,
             email: values.email,
             password: values.password,
@@ -47,12 +48,17 @@ export default function SignIn({ csrfToken }): JSX.Element {
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
             <div className="bg-slate-900 flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
-
-              <div 
-                className='py-10 relative z-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2'
+              <div
+                className="pt-10 relative z-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2"
                 // className="bg-slate-800 container mx-auto w-80 flex justify-center rounded"
               >
-
+                <Image
+                  className="mx-auto hover:animate-[spin_6s_linear_infinite]"
+                  src={Logo}
+                  alt="Logo"
+                  width={200}
+                  height={200}
+                />
                 <div className="div1 ">
                   <div className="div2 ">
                     <section>
@@ -111,7 +117,6 @@ export default function SignIn({ csrfToken }): JSX.Element {
                       className={`${
                         error ? 'border-red-500' : ''
                       } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
-
                     />
                   </label>
 
@@ -127,18 +132,24 @@ export default function SignIn({ csrfToken }): JSX.Element {
                     {formik.isSubmitting ? 'Please wait...' : 'Sign In'}
                   </button>
                 </div>
-                <div className='flex items-center justify-center'>
-                  <span><p className='text-slate-500 mr-3'> Don't have an account? </p></span>
-                  <a href="/register" className=" ml-5 mt-1 text-sm hover:text-sky-500 font-medium group text-slate-500 transition duration-300">
-                    <p className='text-slate-200'>Sign Up</p>
-                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
+                <div className="flex items-center justify-center pt-2">
+                  <span>
+                    <p className="text-slate-500 mr-3">
+                      {' '}
+                      Don't have an account?{' '}
+                    </p>
+                  </span>
+                  <a
+                    href="/register"
+                    className=" ml-5 mt-1 text-sm hover:text-sky-500 font-medium group text-slate-500 transition duration-300"
+                  >
+                    <p className="text-slate-200">Sign Up</p>
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </a>
                 </div>
               </div>
             </div>
-            
           </form>
-          
         )}
       </Formik>
     </>
@@ -146,7 +157,7 @@ export default function SignIn({ csrfToken }): JSX.Element {
 }
 
 // This is the recommended way for Next.js 9.3 or newer
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   return {
     props: {
       csrfToken: await getCsrfToken(context),
