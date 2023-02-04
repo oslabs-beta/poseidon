@@ -1,14 +1,48 @@
 import Footer from '../footer';
-export default function CostComponent() {
+import { useState, useEffect } from 'react';
+
+export default function CostComponent({ data }: any) {
+  let refinedData: any = '';
+  // https://docs.kubecost.com/using-kubecost/getting-started/cost-allocation
+
+  // This is DATA after all our friggin work:  {
+  // totalCPU: 11.35361,
+  // totalRAM: 0,
+  // totalGPU: 0,
+  // totalloadBalancerCost: 0,
+  // totalNetworkCost: 0,
+  // totalPVCost: 0.25128,
+  // totalCost: 13.93826,
+  // totalSharedCost: 0,
+  // totalDays: 2
+
+  //make a function to generate totals for CPU, RAM, LoadBalance, and total from data
+  //make formula that takes data props and calcs the AVERAGE cost of each component per day using the totalDays key/value inside data
+  function getAverages(data: any) {
+    //take totalDays
+    const totalDays = data.totalDays;
+    //create new set of variables to store updated projected costs for each val in data
+    const averageCost = {};
+
+    //iterate over the rest of data
+    for (const key in data) {
+      //calc the average cost/day/component
+      averageCost[key] = (data[key] / totalDays) * 30;
+    }
+    console.log('This is averageCost', averageCost);
+    refinedData = averageCost;
+    return;
+  }
+
+  getAverages(data);
   return (
     <div className="grid h-screen place-items-center bg-slate-900  w-full shadow-inner body ">
-      <div className=" justify-center items-center flex flex-row mt-12 ">
+      <div className=" justify-center items-center flex flex-row ">
         <a
           href="#"
           className="block max-w-sm p-7 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 "
         >
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {' '}
             Deployment Cost Calculator
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400 mb-8"></p>
@@ -55,10 +89,7 @@ export default function CostComponent() {
                 Memory in mbs
               </label>
             </div>
-            <button
-              // disabled={!input}
-              className="mx-auto bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white"
-            >
+            <button className="mx-auto bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white">
               Calculate
             </button>
           </div>
@@ -69,20 +100,12 @@ export default function CostComponent() {
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="px-6 py-3">
-                  Vendor <br />
-                  Name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Average cost <br />
-                  per cluster
-                </th>
-                <th scope="col" className="px-6 py-3">
                   Cost <br />
-                  per pod
+                  Catogory
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Kubelet <br />
-                  cost
+                  Total Cost <br />
+                  per month
                 </th>
               </tr>
             </thead>
@@ -92,72 +115,119 @@ export default function CostComponent() {
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  AWS
+                  CPU Cost
                 </th>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalCPU).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  GCP
+                  RAM Cost
                 </th>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalRAM).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  AZURE
+                  GPU Cost
                 </th>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalGPU).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  Rancher
+                  Load Balancer Cost
                 </th>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalloadBalancerCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  Red Hat OpenShift
+                  Network Cost
                 </th>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalNetworkCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
+              </tr>
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  PV Cost
+                </th>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalPVCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
+              </tr>
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Shared Cost
+                </th>
+                <td className="px-6 py-4">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalSharedCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
               <tr className="bg-white dark:bg-gray-800 dark:border-gray-700">
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="px-6 py-4 whitespace-nowrap dark:text-white"
                 >
-                  VMware Tanzu
+                  <p className="text-sky-500 font-bold ">Total Cost:</p>
                 </th>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
-                <td className="px-6 py-4">$0</td>
+                <td className="px-6 py-4 font-bold text-sky-500">
+                  $
+                  {refinedData.totalCPU
+                    ? parseFloat(refinedData.totalCost).toFixed(2)
+                    : 'Not Connected to Kubecost'}
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <Footer />
+      {/* <div>Your Estimated Cluster cost is:</div> */}
+      {/* <Footer /> */}
     </div>
   );
 }
