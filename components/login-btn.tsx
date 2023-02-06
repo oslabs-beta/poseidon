@@ -1,11 +1,12 @@
 'use client'
 import { useSession, signIn, signOut } from "next-auth/react"
 
-//new client side login button that can be used anywhere to login
+//new client side login button that can be used anywhere to login for auth and toggles between sign in / sign out
 
 export default function LoginButton() {
-  const { data: session }:any = useSession()
+  const { data: session }: any = useSession()
 
+  // if the session exists render the personalized greeting and logout button
   if (session) {
     return (
       <>
@@ -24,6 +25,8 @@ export default function LoginButton() {
       </>
     )
   }
+
+  // if the session does NOT exist, render the signin button
   return (
     <>
       <button 

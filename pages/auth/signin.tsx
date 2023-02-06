@@ -56,8 +56,7 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
             <div className="bg-slate-900 flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
               <div
                 className="pt-10 relative z-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2"
-                // className="bg-slate-800 container mx-auto w-80 flex justify-center rounded"
-              >
+                >
                 <Image
                   className="mx-auto hover:animate-[spin_6s_linear_infinite]"
                   src={Logo}

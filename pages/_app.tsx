@@ -8,6 +8,7 @@ export default function MyApp({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
+    /* A wrapper for the next-auth library. */
     <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>

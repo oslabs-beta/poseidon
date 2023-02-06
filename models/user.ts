@@ -5,6 +5,7 @@ import { Schema, model, models } from 'mongoose';
 //   password: string;
 //   firstName: string;
 //   lastName: string;
+//   ipAddress: string;
 // }
 
 const userSchema = new Schema({

@@ -1,9 +1,12 @@
+// IN USE
+
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import RegisterForm from '../components/register';
 import Logo from '../public/LOGO-FINAL.svg'
 
+// MAIN REGISTER PAGE
 export default function Register() {
   return (
     <div className='grid h-screen place-items-center bg-slate-900 body'>
@@ -16,6 +19,7 @@ export default function Register() {
 
       <main className='relative z-10 -ml-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2'>
 
+        {/* SPINNING LOGO */}
         <Image 
           className='mx-auto hover:animate-[spin_6s_linear_infinite]'
           src={Logo}
@@ -24,6 +28,7 @@ export default function Register() {
           height={200}
         />    
 
+        {/* FANCY POSEIDON TEXT */}
         <div className='div1 '>
           <div className='div2 '>
             <section>
@@ -35,6 +40,7 @@ export default function Register() {
           </div>
         </div>
 
+        {/* REGISTER FORM COMPONENT */}
         <div>
           <RegisterForm/>
         </div>
