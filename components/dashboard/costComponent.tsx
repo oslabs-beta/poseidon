@@ -114,50 +114,49 @@ export default function CostComponent({ data }: any) {
   getAverages(kubeCostVals);
   makeTableVals(refinedData);
   return (
-    <div className="grid h-screen place-items-center bg-slate-900  w-full shadow-inner body ">
-      <div className=" justify-center items-center flex flex-row ">
-        <div className="ml-6 relative overflow-x-auto border border-gray-600 rounded-lg">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" className="px-6 py-3">
-                  Cost <br />
-                  Category
+    // <div className="grid h-screen place-items-center bg-slate-900  w-full shadow-inner body ">
+    <div className="mx-auto flex flex-row justify-center items-center  ">
+      <div className="ml-6 relative overflow-x-auto border border-gray-600 rounded-lg">
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Cost <br />
+                Category
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Total Cost <br />
+                per month
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableVals ? (
+              tableVals
+            ) : (
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <h2>
+                    You Need To Connect To Kubecost Before You Can See Expected
+                    Cluster Costs
+                  </h2>
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  Total Cost <br />
-                  per month
-                </th>
+                <td className="px-6 py-4">
+                  <h2>
+                    You Need To Connect To Kubecost Before You Can See Expected
+                    Cluster Costs
+                  </h2>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {tableVals ? (
-                tableVals
-              ) : (
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    <h2>
-                      You Need To Connect To Kubecost Before You Can See
-                      Expected Cluster Costs
-                    </h2>
-                  </th>
-                  <td className="px-6 py-4">
-                    <h2>
-                      You Need To Connect To Kubecost Before You Can See
-                      Expected Cluster Costs
-                    </h2>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+            )}
+          </tbody>
+        </table>
       </div>
-      <Footer />
     </div>
+    // </div>
   );
 }
 

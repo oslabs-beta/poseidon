@@ -12,8 +12,9 @@ const fetcher = async (url: string) => fetch(url).then((res) => res.json());
 
 export default function DashboardContainer({ props }: any) {
   const [clusterType, setClusterType] = useState('deployed');
+  //http://34.121.148.52:9090/overview
   const { data, error, isLoading } = useSWR(
-    `http://127.0.0.1:9090/model/allocation?window=15d&aggregate=cluster`,
+    `http://34.121.148.52:9090/model/allocation?window=15d&aggregate=cluster`,
     fetcher
   );
 
