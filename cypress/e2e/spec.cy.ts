@@ -1,29 +1,3 @@
-// describe('template spec', () => {
-//   it('passes', () => {
-//     cy.visit('https://example.cypress.io');
-//   });
-// });
-
-// describe('My First Test', () => {
-//   it('Does not do much! This should pass.', () => {
-//     expect(true).to.equal(true);
-//   });
-// });
-// describe('My First Test', () => {
-//   it('Does not do much! This should fail.', () => {
-//     expect(true).to.equal(false);
-//   });
-// });
-
-// describe('My First Test', () => {
-//   it('Visits the Kitchen Sink', () => {
-//     // cy.visit('https://example.cypress.io');
-//     // cy.contains('type');
-//     cy.visit('http://localhost:3500/');
-//     // cy.contains('POSEIDON');
-//   });
-// });
-
 
 /*
 any visit to http://localhost:3500/ should check cookies
