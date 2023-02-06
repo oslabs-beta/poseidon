@@ -60,12 +60,12 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }: any) {
-      const { email, lastName, firstName, ipAddress } = token.user;
+      // const ipAddress = serverRuntimeConfig.DEPLOYED_CLUSTER_IP;
+      const { email, lastName, firstName } = token.user;
       session.user = {
         email,
         lastName,
         firstName,
-        ipAddress
       };
       return session;
     },
