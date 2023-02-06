@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
         </div>
       </section>
-      {/*         
+      {/*
       <hr className="text-white mx-5" /> */}
 
       <footer className="bg-slate-900 pb-5">
@@ -37,8 +37,10 @@ export default function Footer() {
           <div className=" flex flex-col items-center">
             <div className="sm:w-2/3 text-center py-6">
               <p className="text-sm text-slate-700 font-bold mb-2 font-light">
-                © 2023 by Joshuah Edwards, Will Moody, Xiao Tong Chow, Alina
-                Grafkina
+                © 2023 by <a href="https://www.linkedin.com/in/joshuah-edwards/">Joshuah Edwards</a>
+                , <a href="https://www.linkedin.com/in/william-moody/">Will Moody</a>
+                , <a href="https://www.linkedin.com/in/xtchow/">Sarah Chow</a>
+                , <a href="https://www.linkedin.com/in/alina-grafkina-955a56179/">Alina Grafkina</a>
               </p>
             </div>
           </div>
