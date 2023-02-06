@@ -6,9 +6,32 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 import { authOptions } from './api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth/next';
 
+// for reference:
+// // // type Props = {
+// // 	children: ReactElement,
+// // 	home: ReactElement
+// //   }
+
+// // export default function Layout({ props: Props }: ReactElement) {
+
+// THIS IS THE CODE THAT WORKED BEFORE SERVER AUTH IMPLEMENTATION
+// export default function Home() {
+//   const { data: session } = useSession();
+//   const dashboard = session ? <DashboardContainer /> : null;
+
+//   return (
+//     <div>
+//       <Head>
+//         <title>Poseidon</title>
+//       </Head>
+//       <NavBar />
+//       {dashboard}
+//       <Footer />
+//     </div>
+//   )
+// }
 
 export default function Home() {
-
   return (
     <div>
       <Head>
@@ -18,15 +41,14 @@ export default function Home() {
       </Head>
 
       <NavBar />
-      <DashboardContainer /> 
+      <DashboardContainer />
       <Footer />
     </div>
-  )
+  );
 }
 
 // this is a server side retreival of the session cookie, which then returns the props to the component above- allows the page to not even render if no cookie
 export async function getServerSideProps(context: any) {
-  
   // this gets the session cookie from the server
   const session = await getServerSession(context.req, context.res, authOptions);
 
@@ -37,10 +59,10 @@ export async function getServerSideProps(context: any) {
         destination: '/auth/signin',
         permanent: false,
       },
-    }
+    };
   }
-  // if there is a cookie, return the session info as props
+  console.log(session);
   return {
-    props: { session }
-  }
+    props: { session },
+  };
 }
