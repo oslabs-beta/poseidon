@@ -4,11 +4,18 @@ import { dashUrls } from '../../constants';
 import Router from 'next/router';
 import { useState, useEffect, SyntheticEvent, useRef } from 'react';
 import cluster from 'cluster';
+import useSWR from 'swr';
+import CostError from './costError';
+import Spinner from './spinner';
+
+const fetcher = async (url: string) => fetch(url).then((res) => res.json());
 
 export default function DashboardContainer({ props }: any) {
-  // const clusterType: any = useRef('deployed');
-
   const [clusterType, setClusterType] = useState('deployed');
+  const { data, error, isLoading } = useSWR(
+    `http://127.0.0.1:9090/model/allocation?window=15d&aggregate=cluster`,
+    fetcher
+  );
 
   // array for deployed clusters
   const deployedVisualizers = dashUrls[0][0]
@@ -49,25 +56,12 @@ export default function DashboardContainer({ props }: any) {
           >
             <input id="Toggle3" type="checkbox" className="hidden peer" />
             <span
-              id="local"
-              // type="span"
-              className={
-                clusterType === 'local'
-                  ? 'bg-gray-300 px-4 py-2 rounded-l dark:bg-sky-500'
-                  : 'px-4 py-2 rounded-l dark:bg-gray-300'
-              }
-              // onSubmit={toggleSelection}
-              onClick={toggleSelection}
-            >
-              Local Cluster
-            </span>
-            <span
               id="deployed"
               // type="span"
               className={
                 clusterType === 'deployed'
-                  ? 'bg-gray-300 px-4 py-2  dark:bg-sky-500'
-                  : 'px-4 py-2  dark:bg-gray-300'
+                  ? 'bg-gray-300 px-4 py-2 rounded-l dark:bg-sky-500'
+                  : 'px-4 py-2 rounded-l dark:bg-gray-300 hover:underline hover:text-sky-500'
               }
               // onSubmit={toggleSelection}
               onClick={toggleSelection}
@@ -75,12 +69,25 @@ export default function DashboardContainer({ props }: any) {
               Deployed Cluster
             </span>
             <span
-              id="Kubecost"
+              id="local"
+              // type="span"
+              className={
+                clusterType === 'local'
+                  ? 'bg-gray-300 px-4 py-2 dark:bg-sky-500'
+                  : 'px-4 py-2 dark:bg-gray-300 hover:underline hover:text-sky-500'
+              }
+              // onSubmit={toggleSelection}
+              onClick={toggleSelection}
+            >
+              Local Cluster
+            </span>
+            <span
+              id="kubecost"
               // type="span"
               className={
                 clusterType === 'kubecost'
                   ? 'bg-gray-300 px-4 py-2 rounded-r dark:bg-sky-500'
-                  : 'px-4 py-2 rounded-r dark:bg-gray-300'
+                  : 'px-4 py-2 rounded-r dark:bg-gray-300 hover:underline hover:text-sky-500'
               }
               // onSubmit={toggleSelection}
               onClick={toggleSelection}
@@ -108,6 +115,27 @@ export default function DashboardContainer({ props }: any) {
             }
           >
             {localVisualizers}
+          </div>
+          <div
+            className={
+              clusterType === 'kubecost'
+                ? 'container flex flex-wrap justify-between mx-auto w-30 px-12 py-5'
+                : 'hidden'
+            }
+          >
+            {error ? (
+              <CostError />
+            ) : (
+              <>
+                {isLoading ? (
+                  <Spinner />
+                ) : (
+                  <>
+                    <CostComponent data={data} />
+                  </>
+                )}
+              </>
+            )}
           </div>
         </div>
       </section>
