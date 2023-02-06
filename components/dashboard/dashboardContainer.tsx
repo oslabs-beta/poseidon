@@ -39,12 +39,12 @@ export default function DashboardContainer({ props }: any) {
   const toggleSelection = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setClusterType(e.currentTarget.id);
-    console.log('This is the cluster type: ', clusterType);
+    // console.log('This is the cluster type: ', clusterType);
   };
 
   useEffect(() => {
     let clusterIndex = clusterType === 'deployed' ? 0 : 1;
-    console.log('Current clusterIndex: ', clusterIndex);
+    // console.log('Current clusterIndex: ', clusterIndex);
   }, [clusterType]);
 
   return (
