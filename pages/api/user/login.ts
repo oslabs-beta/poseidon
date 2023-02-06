@@ -5,13 +5,22 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
 
 export default async function Login(req: NextApiRequest, res: NextApiResponse) {
+  
+  /* Connecting to the mongo database. */
   await connectMongo();
+
+
+  /* Destructuring the request object. */
   const { method, body } = req;
   const { email, password } = body;
+
+  
+  /* Checking to see if the email and password are present. */
   if (email && password) {
     switch (method) {
       case 'POST':
         try {
+          /* Finding the user in the database. */
           const user = await User.findOne({ email });
           
           // need to handle incorrect password

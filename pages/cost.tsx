@@ -11,7 +11,10 @@ import CostError from '../components/dashboard/costError';
 import Spinner from '../components/dashboard/spinner';
 import useSWR from 'swr';
 import { useState, useEffect } from 'react';
+
+
 const fetcher = async (url: string) => fetch(url).then((res) => res.json());
+
 export default function Cost() {
   const { data, error, isLoading } = useSWR(
     `http://127.0.0.1:9090/model/allocation?window=15d&aggregate=cluster`,
@@ -20,6 +23,12 @@ export default function Cost() {
   if (error) {
     return (
       <>
+        <Head>
+          <title className="text-slate-200 text-2xl">Cost Analysis</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/LogoPNG.png" />
+        </Head>
+        
         <CostError />
       </>
     );
@@ -27,6 +36,12 @@ export default function Cost() {
   if (isLoading) {
     return (
       <>
+        <Head>
+          <title className="text-slate-200 text-2xl">Cost Analysis</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/LogoPNG.png" />
+        </Head>
+
         <Spinner />
       </>
     );
@@ -34,7 +49,9 @@ export default function Cost() {
   return (
     <div>
       <Head>
-        <title>Cost Analysis</title>
+        <title className="text-slate-200 text-2xl">Cost Analysis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/LogoPNG.png" />
       </Head>
 
       <NavBar />

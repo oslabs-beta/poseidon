@@ -17,7 +17,6 @@ interface KubecostTotals {
 interface HomeProps {
   data: {}[];
 }
-
 interface RegisterValues {
   email: string;
   password: string;
@@ -25,4 +24,10 @@ interface RegisterValues {
   firstName: string;
   ipAddress: string;
   changePassword?: string;
+}
+interface SessionData {
+  email: string;
+  lastName: string;
+  firstName: string;
+  ipAddress: string;
 }

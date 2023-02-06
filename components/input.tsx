@@ -1,6 +1,6 @@
 import { ErrorMessage, useField } from "formik";
 
-// need to fix any on this component
+// input component used in forms for register
 export const Input = ({ name, label, ...props }: any) => {
   const [field, meta] = useField(name);
   return (
