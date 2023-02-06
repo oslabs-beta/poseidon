@@ -5,9 +5,11 @@ import getConfig from 'next/config';
 const { serverRuntimeConfig } = getConfig();
 
 export const authOptions: NextAuthOptions = {
+  // sets the next option as JWT
   session: {
     strategy: 'jwt',
   },
+  // sets the provider as credentials : ie: username / password
   providers: [
     CredentialsProvider({
       name: 'credentials',
@@ -17,13 +19,14 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
 
+      // this is related to the sign in page and sign in function
       async authorize(credentials, req) {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
-        //perform your login logic
-        console.log('made this far', email, password);
+        // perform your login logic - call the api - user - login
+        // have to do a full url
         const res = await fetch(`http://localhost:3500/api/user/login`, {
           method: 'POST',
           headers: {
