@@ -15,9 +15,9 @@ const Home: NextPage = () => {
     
     >
       <Head>
-        <title className='text-slate-200 text-2xl '>Login</title>
+        <title className="text-slate-200 text-2xl ">Sign In</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/LogoPNG.png" />
       </Head>
 
       {/* <div className="bg-no-repeat bg-left-top" style={"background-image: url('../public/backgroundImg.png');"}></div> */}

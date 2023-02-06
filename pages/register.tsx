@@ -9,9 +9,9 @@ export default function Register() {
     <div className='grid h-screen place-items-center bg-slate-900 body'>
 
       <Head>
-        <title>Sign Up Page</title>
+        <title className="text-slate-200 text-2xl ">Sign Up</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/LogoPNG.png" />
       </Head>
 
       <main className='relative z-10 -ml-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2'>
