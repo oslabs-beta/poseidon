@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npx next dev",
-    "port": "npx next dev -p 3500",
+    "dev": "next dev",
+    "port": "next dev -p 3500",
     "build": "next build",
     "start": "next start",
     "test": "npx kill-port 3500 && next dev -p 3500 & cypress open"
