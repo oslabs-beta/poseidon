@@ -17,7 +17,7 @@ export default async function handler(
     case 'POST':
       try {
         const test = await Test.create(body);
-        console.log('created user', test);
+        // console.log('created user', test);
         res.json({ test });
       } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ export default async function handler(
     case 'GET':
       try {
         const test = await Test.findOne(body);
-        console.log('found user', test);
+        // console.log('found user', test);
         res.json({ test });
       } catch (error) {
         console.log(error);
