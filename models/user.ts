@@ -12,6 +12,7 @@ const userSchema = new Schema({
   password: { type: String, require: true },
   firstName: { type: String, require: true },
   lastName: { type: String, require: true },
+  ipAddress: { type: String, require: true },
 });
 
 const User = models.User || model('User', userSchema);

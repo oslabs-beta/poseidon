@@ -7,11 +7,10 @@ export default async function Register(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	// console.log('in register!');
 	await connectMongo();
 	const { method, body } = req;
-	const { email, password, firstName, lastName } = body;
-	if (email && password && firstName && lastName) {
+	const { email, password, firstName, lastName, ipAddress} = body;
+	if (email && password && firstName && lastName && ipAddress) {
 		switch (method) {
 			// console.log('in between');
 			case 'POST':
@@ -34,6 +33,7 @@ export default async function Register(
 							password: hashedPassword,
 							firstName,
 							lastName,
+							ipAddress,
 						});
 						// console.log('userExist:', userExist);
 						return res.json({ user });
