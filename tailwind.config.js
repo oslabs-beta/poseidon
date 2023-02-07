@@ -9,31 +9,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'pink': '#ff49db'
+        pink: '#ff49db',
         // @apply bg-sky-400 hover:bg-sky-600 hover:scale-125 hover:accent-white text-slate-200 font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed;
       },
       // animation: {
       //   'spin-slow': 'spin 3s linear infinite',
       // }
-    }
+    },
   },
   fontFamily: {
-    sans: [
-      "Inter var, sans-serif",
-      { fontFeatureSettings: '"cv11", "ss01"' },
-    ],
+    sans: ['Inter var, sans-serif', { fontFeatureSettings: '"cv11", "ss01"' }],
   },
   theme: {
     container: {
       center: true,
     },
   },
-  plugins: [require('flowbite/plugin')], 
+  plugins: [require('flowbite/plugin')],
   plugins: [],
   // plugins: {
   //   // tailwindcss: { config: './tailwindcss-config.js' },
   // },
-}
+};
 
 /*
 base: OG.slate.900,
