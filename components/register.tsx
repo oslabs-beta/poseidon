@@ -36,139 +36,139 @@ export default function RegisterForm() {
 	return (
 		<div>
 
-		<div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
-			<div className="flex-col align-center">
-			<h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">
-					Register
-				</h1>
-				<Formik
-					initialValues={{
-						email: '',
-						password: '',
-						lastName: '',
-						firstName: '',
-						changePassword: '',
-						ipAddress: '',
-					}}
-          validationSchema={Yup.object({
-            email: Yup.string()
-              .min(5, "Must be at least 5 characters")
-							.max(30, 'Must be 30 characters or less')
-              .required("Required")
-            	.email('Invalid email address'),
-            password: Yup.string()
-              .min(5, "Must be at least 5 characters")
-							.max(30, 'Must be 30 characters or less')
-              .required("Required"),
-						changePassword: Yup.string().when("password", {
-							is: (val: string) => (val && val.length > 0 ? true : false),
-							then: Yup.string().oneOf(
-								[Yup.ref("password")],
-								"Both password need to be the same"
-							)
-						}),
-            lastName: Yup.string()
-              .required("Required")
-							.max(30, 'Must be 30 characters or less'),
-            firstName: Yup.string()
-              .required("Required")
-							.max(30, 'Must be 30 characters or less'),
-						ipAddress: Yup.string()
-              .required("Required")
-							.max(30, 'Must be 30 characters or less'),
-          })}
+			<div className='bg-slate-800 container mx-auto w-80 flex justify-center rounded'>
+				<div className="flex-col align-center">
+					<h1 className="flex-col align-center m-3 font-bold text-lg text-slate-200">
+						Register
+					</h1>
+					<Formik
+						initialValues={{
+							email: '',
+							password: '',
+							lastName: '',
+							firstName: '',
+							changePassword: '',
+							ipAddress: '',
+						}}
+						validationSchema={Yup.object({
+							email: Yup.string()
+								.min(5, "Must be at least 5 characters")
+								.max(30, 'Must be 30 characters or less')
+								.required("Required")
+								.email('Invalid email address'),
+							password: Yup.string()
+								.min(5, "Must be at least 5 characters")
+								.max(30, 'Must be 30 characters or less')
+								.required("Required"),
+							changePassword: Yup.string().when("password", {
+								is: (val: string) => (val && val.length > 0 ? true : false),
+								then: Yup.string().oneOf(
+									[Yup.ref("password")],
+									"Both password need to be the same"
+								)
+							}),
+							lastName: Yup.string()
+								.required("Required")
+								.max(30, 'Must be 30 characters or less'),
+							firstName: Yup.string()
+								.required("Required")
+								.max(30, 'Must be 30 characters or less'),
+							ipAddress: Yup.string()
+								.required("Required")
+								.max(30, 'Must be 30 characters or less'),
+						})}
 
-					// unsure about this error
-					onSubmit={(
-						values: RegisterValues,
-						{ setSubmitting }: FormikHelpers<RegisterValues>
-					) => {
-						loginUser({
-							email: values.email,
-							password: values.password,
-							firstName: values.firstName,
-							lastName: values.lastName,
-							ipAddress: values.ipAddress,
-						});
-						setSubmitting(false);
-					}}
-				>
-					<Form>
-						{/* first name input */}
-						<div>
-							<Input
-                id="firstName"
-								name="firstName"
-								placeholder="First Name"
-								aria-describedby="usernameHelp"
-              />
-						</div>
+						// unsure about this error
+						onSubmit={(
+							values: RegisterValues,
+							{ setSubmitting }: FormikHelpers<RegisterValues>
+						) => {
+							loginUser({
+								email: values.email,
+								password: values.password,
+								firstName: values.firstName,
+								lastName: values.lastName,
+								ipAddress: values.ipAddress,
+							});
+							setSubmitting(false);
+						}}
+					>
+						<Form>
+							{/* first name input */}
+							<div>
+								<Input
+									id="firstName"
+									name="firstName"
+									placeholder="First Name"
+									aria-describedby="usernameHelp"
+								/>
+							</div>
 
-						{/* last name input */}
-						<div>
-							<Input
-								id="lastName"
-								name="lastName"
-								placeholder="Last Name"
-								aria-describedby="usernameHelp"
-              />
-						</div>
+							{/* last name input */}
+							<div>
+								<Input
+									id="lastName"
+									name="lastName"
+									placeholder="Last Name"
+									aria-describedby="usernameHelp"
+								/>
+							</div>
 
-						{/* email input */}
-						<div>
-							<Input
-								id="email"
-								name="email"
-								placeholder="Email"
-								aria-describedby="usernameHelp"
-              />
-						</div>
+							{/* email input */}
+							<div>
+								<Input
+									id="email"
+									name="email"
+									placeholder="Email"
+									aria-describedby="usernameHelp"
+								/>
+							</div>
 
-						{/* ip address input */}
-						<div>
-							<Input
-								id="ipAddress"
-								name="ipAddress"
-								placeholder="IP Address"
-              />
-						</div>
+							{/* ip address input */}
+							<div>
+								<Input
+									id="ipAddress"
+									name="ipAddress"
+									placeholder="IP Address"
+								/>
+							</div>
 
-						{/* password input */}
-						<div>
-							<Input
-								id="password"
-								name="password"
-								placeholder="Password"
-								type="password"
-              />
-						</div>
+							{/* password input */}
+							<div>
+								<Input
+									id="password"
+									name="password"
+									placeholder="Password"
+									type="password"
+								/>
+							</div>
 
-						<div>
-							<Input
-								id="changePassword"
-								name="changePassword"
-								placeholder="Confirm Password"
-								type="password"
-              />
-						</div>
+							<div>
+								<Input
+									id="changePassword"
+									name="changePassword"
+									placeholder="Confirm Password"
+									type="password"
+								/>
+							</div>
 
 
-						
-            {/* MAY WANT TO HAVE FIELD TO CONFIRM PASSWORD and give feedback on the info marching up */}
-						<div className="flex justify-center mt-5">
-							<button
-								type="submit"
-								// disabled={!input}
-								className='bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white'
-							>
-								Register
-							</button>
-						</div>
-						<hr className="w-49 h-0.5 mx-auto bg-gray-100 border-0 rounded md:mt-6 mb-3 mr-3 ml-3 dark:bg-gray-700" />
-					</Form>
-				</Formik>
+
+							{/* MAY WANT TO HAVE FIELD TO CONFIRM PASSWORD and give feedback on the info marching up */}
+							<div className="flex justify-center mt-5">
+								<button
+									type="submit"
+									// disabled={!input}
+									className='bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 hover:scale-110 hover:accent-white'
+								>
+									Register
+								</button>
+							</div>
+							<hr className="w-49 h-0.5 mx-auto bg-gray-100 border-0 rounded md:mt-6 mb-3 mr-3 ml-3 dark:bg-gray-700" />
+						</Form>
+					</Formik>
+				</div>
 			</div>
-		</div>
 		</div>
 	);
 }

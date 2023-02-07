@@ -38,17 +38,17 @@ export default function Footer() {
         <div className="container mx-auto px-6">
           <div className=" flex flex-col items-center">
             <div className="sm:w-2/3 text-center py-6">
-              <p className="text-sm text-slate-700 mb-2 font-light">
+              <p className="text-sm text-slate-500 mb-2 font-light">
                 © 2023 by{' '}
-                <a href="https://www.linkedin.com/in/joshuah-edwards/">
+                <a href="https://www.linkedin.com/in/joshuah-edwards/" className="hover:underline hover:text-sky-500">
                   Joshuah Edwards
                 </a>
                 ,{' '}
-                <a href="https://www.linkedin.com/in/william-moody/">
+                <a href="https://www.linkedin.com/in/william-moody/" className="hover:underline hover:text-sky-500">
                   Will Moody
                 </a>
-                , <a href="https://www.linkedin.com/in/xtchow/">Sarah Chow</a>,{' '}
-                <a href="https://www.linkedin.com/in/alina-grafkina-955a56179/">
+                , <a href="https://www.linkedin.com/in/xtchow/" className="hover:underline hover:text-sky-500">Sarah Chow</a>,{' '}
+                <a href="https://www.linkedin.com/in/alina-grafkina-955a56179/" className="hover:underline hover:text-sky-500">
                   Alina Grafkina
                 </a>
               </p>

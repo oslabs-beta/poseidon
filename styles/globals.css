@@ -7,7 +7,6 @@
 .body {
   background-image: url('../public/backgroundImg.png');
   background-repeat: no-repeat;
-  /* background-size:cover; */
   backdrop-filter: blur(100px);
 }
 
