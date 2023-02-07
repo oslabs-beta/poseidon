@@ -22,16 +22,19 @@ export default function DashboardContainer({ props }: any) {
   const deployedVisualizers = dashUrls[0][0]
     ? dashUrls[0].map((url, i) => <Grafana key={i} url={url} />)
     : [
-        <div className="mx-auto h-48 text-sky-500 text-xl">
+        <div key="deployedkey" className="mx-auto h-48 text-sky-500 text-xl">
           You need to connect deployed clusters to see this data!
         </div>,
       ];
 
   // array for local clusters
   const localVisualizers = dashUrls[1][0]
-    ? dashUrls[1].map((url, i) => <Grafana key={-i} url={url} />)
+    ? dashUrls[1].map((url, i) => <Grafana key={`${i}+${i}`} url={url} />)
     : [
-        <div className="container mx-auto flex flex-col justify-center items-center h-52 text-sky-500 text-3xl">
+        <div
+          key="localkey"
+          className="container mx-auto flex flex-col justify-center items-center h-52 text-sky-500 text-3xl"
+        >
           You need to connect local clusters to see this data!
         </div>,
       ];
@@ -48,7 +51,7 @@ export default function DashboardContainer({ props }: any) {
   }, [clusterType]);
 
   return (
-    <>
+    <div className="container bg-slate-900 flex flex-wrap flex-grow text-gray-600 body-font min-w-full shadow-inner body min-h-2/3">
       <section className="container bg-slate-900 flex flex-wrap flex-grow text-gray-600 body-font min-w-full shadow-inner body min-h-2/3">
         <div className="cluster-selection mx-auto mt-10">
           <label
@@ -140,7 +143,7 @@ export default function DashboardContainer({ props }: any) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
   // return (
   //   <div className="bg-red-400 content-center animate-pulse">
