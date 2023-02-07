@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 import Image from 'next/image';
 import Logo from '../public/LOGO-FINAL.svg';
 import LoginButton from './login-btn';
