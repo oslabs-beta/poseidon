@@ -48,8 +48,8 @@ export default function DashboardContainer({ props }: any) {
   }, [clusterType]);
 
   return (
-    <div>
-      <section className="bg-slate-900 flex flex-wrap text-gray-600 body-font w-full shadow-inner body">
+    <>
+      <section className="container bg-slate-900 flex flex-wrap flex-grow text-gray-600 body-font min-w-full shadow-inner body min-h-2/3">
         <div className="cluster-selection mx-auto mt-10">
           <label
             htmlFor="Toggle3"
@@ -140,7 +140,7 @@ export default function DashboardContainer({ props }: any) {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
   // return (
   //   <div className="bg-red-400 content-center animate-pulse">

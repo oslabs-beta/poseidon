@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <div className="full-width">
+    <div className="full-width mt-auto">
       {/* CALL TO ACTION, PLEASE VISIT OUR OSP SITE */}
       <section className="bg-slate-900 ">
         <div className="max-w-lg bg-slate-900 px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center">
@@ -39,10 +39,18 @@ export default function Footer() {
           <div className=" flex flex-col items-center">
             <div className="sm:w-2/3 text-center py-6">
               <p className="text-sm text-slate-700 mb-2 font-light">
-                © 2023 by <a href="https://www.linkedin.com/in/joshuah-edwards/">Joshuah Edwards</a>
-                , <a href="https://www.linkedin.com/in/william-moody/">Will Moody</a>
-                , <a href="https://www.linkedin.com/in/xtchow/">Sarah Chow</a>
-                , <a href="https://www.linkedin.com/in/alina-grafkina-955a56179/">Alina Grafkina</a>
+                © 2023 by{' '}
+                <a href="https://www.linkedin.com/in/joshuah-edwards/">
+                  Joshuah Edwards
+                </a>
+                ,{' '}
+                <a href="https://www.linkedin.com/in/william-moody/">
+                  Will Moody
+                </a>
+                , <a href="https://www.linkedin.com/in/xtchow/">Sarah Chow</a>,{' '}
+                <a href="https://www.linkedin.com/in/alina-grafkina-955a56179/">
+                  Alina Grafkina
+                </a>
               </p>
             </div>
           </div>

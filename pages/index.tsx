@@ -41,8 +41,10 @@ export default function Home() {
       </Head>
 
       <NavBar />
-      <DashboardContainer />
-      <Footer />
+      <div className="flex flex-col min-h-screen min-w-full">
+        <DashboardContainer />
+        <Footer />
+      </div>
     </div>
   );
 }
