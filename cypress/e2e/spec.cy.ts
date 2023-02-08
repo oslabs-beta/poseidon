@@ -44,6 +44,8 @@ describe('login page', () => {
 });
 // console.log(see);
 
+
+// BELOW IS HOW AUTH SHOULD LOOK LIKE
 // describe('The Login Page', () => {
 //   beforeEach(() => {
 //     // reset and seed the database prior to every test
@@ -63,17 +65,12 @@ describe('login page', () => {
 //     cy.visit('/login')
 
 //     cy.get('input[name=username]').type(username)
-
 //     // {enter} causes the form to submit
 //     cy.get('input[name=password]').type(`${password}{enter}`)
-
 //     // we should be redirected to /dashboard
 //     cy.url().should('include', '/dashboard')
-
 //     // our auth cookie should be present
 //     cy.getCookie('your-session-cookie').should('exist')
-
-
 //   })
 // })
 
@@ -82,10 +79,6 @@ describe('register', () => {
 
   it('no fields may be empty', () => {
     cy.visit('localhost:3500/register')
-    // cy.get('input[name="password"]').get('[value').should('not.contain', '')
-      // .get('input[name="password"]').should('not.have.value', '')
-      // .get('input[value]').should('not.have.length', 0)
-      // .get('input[name="password"]').find('[value]')
       .get('input[name="firstName"]').should('have.value', '')
       .get('input[name="lastName"]').should('have.value', '')
       .get('input[name="email"]').should('have.value', '')

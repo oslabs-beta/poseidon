@@ -1,3 +1,4 @@
+# for local clusters, applies grafana user keys and tokens
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:

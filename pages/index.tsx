@@ -2,34 +2,9 @@ import Head from 'next/head';
 import DashboardContainer from '../components/dashboard/dashboardContainer';
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
-import { useSession, signIn, signOut } from 'next-auth/react';
 import { authOptions } from './api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth/next';
 
-// for reference:
-// // // type Props = {
-// // 	children: ReactElement,
-// // 	home: ReactElement
-// //   }
-
-// // export default function Layout({ props: Props }: ReactElement) {
-
-// THIS IS THE CODE THAT WORKED BEFORE SERVER AUTH IMPLEMENTATION
-// export default function Home() {
-//   const { data: session } = useSession();
-//   const dashboard = session ? <DashboardContainer /> : null;
-
-//   return (
-//     <div>
-//       <Head>
-//         <title>Poseidon</title>
-//       </Head>
-//       <NavBar />
-//       {dashboard}
-//       <Footer />
-//     </div>
-//   )
-// }
 
 export default function Home() {
   return (
@@ -63,7 +38,6 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
-  // console.log(session);
   return {
     props: { session },
   };

@@ -19,10 +19,10 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
       </Head>
 
       <Formik
-        initialValues={{ 
-          email: '', 
-          password: '', 
-          tenantKey: '' 
+        initialValues={{
+          email: '',
+          password: '',
+          tenantKey: ''
         }}
 
         validationSchema={Yup.object({
@@ -97,7 +97,6 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                       aria-label="enter your email"
                       aria-required="true"
                       type="text"
-                      // className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
                       className={`${
                         error ? 'border-red-500' : ''
                       } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
@@ -119,7 +118,6 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                       aria-label="enter your password"
                       aria-required="true"
                       type="password"
-                      // className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
                       className={`${
                         error ? 'border-red-500' : ''
                       } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
@@ -139,7 +137,7 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                     {formik.isSubmitting ? 'Please wait...' : 'Sign In'}
                   </button>
                 </div>
-                
+
                 {/* SWITCH TO SIGN UP PAGE */}
                 <div className="flex items-center justify-center pt-2">
                   <span>

@@ -55,6 +55,7 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
+    // the why is below in these articles for syntax
     // https://cloudcoders.xyz/blog/nextauth-credentials-provider-with-external-api-and-login-page/
     // https://stackoverflow.com/questions/64576733/where-and-how-to-change-session-user-object-after-signing-in
 
@@ -63,7 +64,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }: any) {
-      // const ipAddress = serverRuntimeConfig.DEPLOYED_CLUSTER_IP;
       const { email, lastName, firstName } = token.user;
       session.user = {
         email,

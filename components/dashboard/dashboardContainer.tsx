@@ -1,31 +1,45 @@
+import { dashUrls } from '../../constants';
 import CostComponent from './costComponent';
 import Grafana from './grafana';
-import { dashUrls } from '../../constants';
-import Router from 'next/router';
-import { useState, useEffect, SyntheticEvent, useRef } from 'react';
-import cluster from 'cluster';
+import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import CostError from './costError';
 import Spinner from './spinner';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 const fetcher = async (url: string) => fetch(url).then((res) => res.json());
-
-export default function DashboardContainer({ props }: any) {
+// const IP_deployed_env = publicRuntimeConfig.DEPLOYED_CLUSTER_IP;
+// const name_deployed: string = publicRuntimeConfig.DEPLOYED_CLUSTER_NAME;
+// const newUrls = [
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=2`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=3`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=4`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=5`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=6`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=7`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=8`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=9`,
+// ];
+export default function DashboardContainer() {
   const [clusterType, setClusterType] = useState('deployed');
-  //http://34.121.148.52:9090/overview
+  const kubeip = publicRuntimeConfig.KUBECOST_IP;
+  const localKubeip = publicRuntimeConfig.KUBECOST_IP;
   const { data, error, isLoading } = useSWR(
-    `http://34.121.148.52:9090/model/allocation?window=15d&aggregate=cluster`,
+    `http://${kubeip}:9090/model/allocation?window=15d&aggregate=cluster`,
     fetcher
   );
-
+  let deployedVisualizers;
   // array for deployed clusters
-  const deployedVisualizers = dashUrls[0][0]
-    ? dashUrls[0].map((url, i) => <Grafana key={i} url={url} />)
-    : [
-        <div key="deployedkey" className="mx-auto h-48 text-sky-500 text-xl">
-          You need to connect deployed clusters to see this data!
-        </div>,
-      ];
+  if (dashUrls[0][0]) {
+    deployedVisualizers = dashUrls[0][0]
+      ? dashUrls[0].map((url, i) => <Grafana key={i} url={url} />)
+      : [
+          <div key="deployedkey" className="mx-auto h-48 text-sky-500 text-xl">
+            You need to connect deployed clusters to see this data!
+          </div>,
+        ];
+  }
 
   // array for local clusters
   const localVisualizers = dashUrls[1][0]
@@ -42,12 +56,10 @@ export default function DashboardContainer({ props }: any) {
   const toggleSelection = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setClusterType(e.currentTarget.id);
-    // console.log('This is the cluster type: ', clusterType);
   };
 
   useEffect(() => {
     let clusterIndex = clusterType === 'deployed' ? 0 : 1;
-    // console.log('Current clusterIndex: ', clusterIndex);
   }, [clusterType]);
 
   return (
@@ -61,39 +73,33 @@ export default function DashboardContainer({ props }: any) {
             <input id="Toggle3" type="checkbox" className="hidden peer" />
             <span
               id="deployed"
-              // type="span"
               className={
                 clusterType === 'deployed'
                   ? 'bg-gray-300 px-4 py-2 rounded-l dark:bg-sky-500'
                   : 'px-4 py-2 rounded-l dark:bg-gray-300 hover:underline hover:text-sky-500'
               }
-              // onSubmit={toggleSelection}
               onClick={toggleSelection}
             >
               Deployed Cluster
             </span>
             <span
               id="local"
-              // type="span"
               className={
                 clusterType === 'local'
                   ? 'bg-gray-300 px-4 py-2 dark:bg-sky-500'
                   : 'px-4 py-2 dark:bg-gray-300 hover:underline hover:text-sky-500'
               }
-              // onSubmit={toggleSelection}
               onClick={toggleSelection}
             >
               Local Cluster
             </span>
             <span
               id="kubecost"
-              // type="span"
               className={
                 clusterType === 'kubecost'
                   ? 'bg-gray-300 px-4 py-2 rounded-r dark:bg-sky-500'
                   : 'px-4 py-2 rounded-r dark:bg-gray-300 hover:underline hover:text-sky-500'
               }
-              // onSubmit={toggleSelection}
               onClick={toggleSelection}
             >
               Cost Analysis
@@ -109,7 +115,8 @@ export default function DashboardContainer({ props }: any) {
                 : 'hidden'
             }
           >
-            {deployedVisualizers}
+            {/*@ts-ignore*/}
+            {dashUrls[0][0] && deployedVisualizers}
           </div>
           <div
             className={
@@ -135,7 +142,7 @@ export default function DashboardContainer({ props }: any) {
                   <Spinner />
                 ) : (
                   <>
-                    <CostComponent data={data} />
+                    <CostComponent deployedCost={data} />
                   </>
                 )}
               </>
@@ -145,20 +152,4 @@ export default function DashboardContainer({ props }: any) {
       </section>
     </div>
   );
-  // return (
-  //   <div className="bg-red-400 content-center animate-pulse">
-  //     <div className="content-center">
-  //       <h1 className="text-gray-900 text-center">
-  //         You are not authorized to see this content
-  //       </h1>
-  //     </div>
-  //   </div>
-  // );
-
-  // How to retrieve the unique identifier for dashboard -> https://grafana.com/docs/grafana/latest/developers/http_api/dashboard/
-  // GET /api/dashboards/uid/:uid
-  // Will return the dashboard given the dashboard unique identifier (uid).
-  // Information about the unique identifier of a folder containing the requested dashboard might be found in the metadata.
-
-  // Using d3 with grafana -> https://grafana.com/tutorials/build-a-panel-plugin-with-d3/
 }
