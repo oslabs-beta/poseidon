@@ -32,7 +32,6 @@ export default async function Login(req: NextApiRequest, res: NextApiResponse) {
         } catch (reason) {
           return res.status(500).json({ login: `Error in GET. ${reason}` });
         }
-        break;
       default:
         return res.status(200).json({ login: 'This route is not set up yet!' });
     }

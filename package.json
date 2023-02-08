@@ -5,7 +5,8 @@
     "port": "next dev -p 3500",
     "build": "next build",
     "start": "next start",
-    "test": "npx kill-port 3500 && next dev -p 3500 & cypress open"
+    "test": "npx kill-port 3500 && next dev -p 3500 & cypress open",
+    "forward": "kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090 & next dev -p 3500 & kubectl port-forward svc/prometheus-operated 9000:9090 & kubectl --namespace default port-forward svc/minikube-grafana 3300:80"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
