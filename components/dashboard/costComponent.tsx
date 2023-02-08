@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import getConfig from 'next/config';
-
+import Spinner from './spinner';
 const { publicRuntimeConfig } = getConfig();
 const fetcher = async (url: string) => fetch(url).then((res) => res.json());
 
@@ -16,6 +16,7 @@ export default function CostComponent({ deployedCost }: any) {
   );
   const [kubeCostVals, setKubeCostVals] = useState({});
   const [clusterType, setClusterType] = useState('deployed');
+  const [localClusters, setLocalClusters] = useState([]);
   useEffect(() => {
     const sortFetchedData = async (parsedArr: any) => {
       const getProps = async (parsedArr: []) => {
@@ -44,6 +45,7 @@ export default function CostComponent({ deployedCost }: any) {
           }
         }
         parsedArr.forEach((obj: any) => {
+          //this will ignore any objects that are empty (if cluster only has a few days worth of data)
           if (obj.__idle__) {
             totalDays += 1;
             for (const key in obj) {
@@ -68,10 +70,11 @@ export default function CostComponent({ deployedCost }: any) {
     };
     if (clusterType === 'deployed') {
       sortFetchedData(dataArr);
-    } else {
+    } else if (clusterType === 'local' && !error) {
+      console.log('data sortFetchedData: ', data);
       sortFetchedData(data.data);
     }
-  }, [setKubeCostVals, dataArr, clusterType, data]);
+  }, [setKubeCostVals, dataArr, clusterType, data, getAverages, makeTableVals]);
 
   function makeTableVals(data: any): void {
     if (data) {
@@ -125,12 +128,18 @@ export default function CostComponent({ deployedCost }: any) {
       return;
     }
   }
-  getAverages(kubeCostVals);
-  makeTableVals(refinedData);
+
   const toggleSelection = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setClusterType(e.currentTarget.id);
   };
+  if (clusterType === 'deployed' && deployedCost.data) {
+    getAverages(kubeCostVals);
+    makeTableVals(refinedData);
+  } else if (clusterType === 'local' && !error) {
+    getAverages(kubeCostVals);
+    makeTableVals(refinedData);
+  }
   return (
     <div className="mx-auto flex flex-col items-center justify-center items-center  ">
       <div className="relative overflow-x-auto border border-gray-600 rounded-lg">
@@ -157,14 +166,14 @@ export default function CostComponent({ deployedCost }: any) {
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   <h2>
-                    You Need To Connect To Kubecost Before You Can See Expected
-                    Cluster Costs
+                    You Need To Connect To Kubecost
+                    <br /> Before You Can See Expected Cluster Costs
                   </h2>
                 </th>
                 <td className="px-6 py-4">
                   <h2>
-                    You Need To Connect To Kubecost Before You Can See Expected
-                    Cluster Costs
+                    You Need To Connect To Kubecost
+                    <br /> Before You Can See Expected Cluster Costs
                   </h2>
                 </td>
               </tr>
