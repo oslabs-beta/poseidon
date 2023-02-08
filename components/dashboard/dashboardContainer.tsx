@@ -77,8 +77,8 @@ export default function DashboardContainer() {
               id="local"
               className={
                 clusterType === 'local'
-                  ? 'bg-gray-300 px-4 border-x-[0.2px] border-slate-900 py-2 dark:bg-sky-500'
-                  : 'px-4 py-2 dark:bg-gray-300 border-x-[0.2px] border-slate-900 hover:underline hover:text-sky-500'
+                  ? 'bg-gray-300 px-4 border-x-[0.2px] border-slate-500 py-2 dark:bg-sky-500'
+                  : 'px-4 py-2 dark:bg-gray-300 border-x-[0.2px] border-slate-500 hover:underline hover:text-sky-500'
               }
               onClick={toggleSelection}
             >
@@ -143,19 +143,7 @@ export default function DashboardContainer() {
                 : 'hidden'
             }
           >
-            {error ? (
-              <CostError />
-            ) : (
-              <>
-                {isLoading ? (
-                  <Spinner />
-                ) : (
-                  <>
-                    <CostComponent deployedCost={data} />
-                  </>
-                )}
-              </>
-            )}
+            <CostComponent deployedCost={data} />
           </div>
         </div>
       </section>

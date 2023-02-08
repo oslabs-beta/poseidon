@@ -5,7 +5,7 @@ export default function Footer() {
     <div className="full-width mt-auto">
       {/* CALL TO ACTION, PLEASE VISIT OUR OSP SITE */}
       <section className="bg-slate-900 ">
-        <div className="max-w-lg bg-slate-900 px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center">
+        <div className="max-w-lg bg-slate-900 px-4 py-8 mx-auto text-left md:max-w-none md:text-center">
           <h1 className="text-3xl font-bold leading-10 tracking-tight text-white text-center sm:leading-none md:text-6xl text-1xl lg:text-5xl">
             <span className="inline md:block">Learn More</span>
             <span className=" mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-emerald-400 to-green-500 md:inline-block">
@@ -40,15 +40,31 @@ export default function Footer() {
             <div className="sm:w-2/3 text-center py-6">
               <p className="text-sm text-slate-500 mb-2 font-light">
                 © 2023 by{' '}
-                <a href="https://www.linkedin.com/in/joshuah-edwards/" className="hover:underline hover:text-sky-500">
+                <a
+                  href="https://www.linkedin.com/in/joshuah-edwards/"
+                  className="hover:underline hover:text-sky-500"
+                >
                   Joshuah Edwards
                 </a>
                 ,{' '}
-                <a href="https://www.linkedin.com/in/william-moody/" className="hover:underline hover:text-sky-500">
+                <a
+                  href="https://www.linkedin.com/in/william-moody/"
+                  className="hover:underline hover:text-sky-500"
+                >
                   Will Moody
                 </a>
-                , <a href="https://www.linkedin.com/in/xtchow/" className="hover:underline hover:text-sky-500">Sarah Chow</a>,{' '}
-                <a href="https://www.linkedin.com/in/alina-grafkina-955a56179/" className="hover:underline hover:text-sky-500">
+                ,{' '}
+                <a
+                  href="https://www.linkedin.com/in/xtchow/"
+                  className="hover:underline hover:text-sky-500"
+                >
+                  Sarah Chow
+                </a>
+                ,{' '}
+                <a
+                  href="https://www.linkedin.com/in/alina-grafkina-955a56179/"
+                  className="hover:underline hover:text-sky-500"
+                >
                   Alina Grafkina
                 </a>
               </p>

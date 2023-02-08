@@ -8,7 +8,10 @@ const fetcher = async (url: string) => fetch(url).then((res) => res.json());
 export default function CostComponent({ deployedCost }: any) {
   let refinedData: any = '';
   let tableVals: any = '';
-  const dataArr = deployedCost.data;
+  let dataArr: any;
+  if (deployedCost) {
+    dataArr = deployedCost.data;
+  }
   const kubeip = publicRuntimeConfig.LOCAL_KUBECOST_IP;
   const { data, error, isLoading } = useSWR(
     `http://${kubeip}:9090/model/allocation?window=15d&aggregate=cluster`,
@@ -68,7 +71,7 @@ export default function CostComponent({ deployedCost }: any) {
       };
       getProps(parsedArr);
     };
-    if (clusterType === 'deployed') {
+    if (clusterType === 'deployed' && deployedCost) {
       sortFetchedData(dataArr);
     } else if (clusterType === 'local' && !error) {
       console.log('data sortFetchedData: ', data);
@@ -133,7 +136,7 @@ export default function CostComponent({ deployedCost }: any) {
     e.preventDefault();
     setClusterType(e.currentTarget.id);
   };
-  if (clusterType === 'deployed' && deployedCost.data) {
+  if (clusterType === 'deployed' && deployedCost !== undefined) {
     getAverages(kubeCostVals);
     makeTableVals(refinedData);
   } else if (clusterType === 'local' && !error) {
@@ -180,6 +183,12 @@ export default function CostComponent({ deployedCost }: any) {
             )}
           </tbody>
         </table>
+      </div>
+      <div className="mt-5">
+        <h5>
+          All cost figures are monthly estimates based on data retrieved from
+          Kubecost.
+        </h5>
       </div>
       <div className="cluster-selection mx-auto mt-10">
         <label
