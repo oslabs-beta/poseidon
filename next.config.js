@@ -7,6 +7,7 @@ module.exports = {
     LOCAL_CLUSTER_IP: process.env.LOCAL_CLUSTER_IP,
     LOCAL_CLUSTER_NAME: process.env.LOCAL_CLUSTER_NAME,
     DEPLOYED_CLUSTER_NAME: process.env.DEPLOYED_CLUSTER_NAME,
+    DEPLOYED_CLUSTER_NAME_2: process.env.DEPLOYED_CLUSTER_NAME_2,
 
   },
   publicRuntimeConfig: {

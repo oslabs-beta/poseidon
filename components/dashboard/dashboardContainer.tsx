@@ -53,12 +53,12 @@ export default function DashboardContainer() {
             htmlFor="Toggle3"
             className="inline-flex items-center p-2 rounded-md cursor-pointer dark:text-gray-800"
           >
-            <input id="Toggle3" type="checkbox" className="hidden peer" />
+            <input id="Toggle3" type="checkbox" className="hidden peer " />
             <span
               id="deployed"
               className={
                 clusterType === 'deployed'
-                  ? 'bg-gray-300 px-4 py-2 rounded-l dark:bg-sky-500'
+                  ? 'bg-gray-300 px-4 py-2 rounded-l dark:bg-sky-500 '
                   : 'px-4 py-2 rounded-l dark:bg-gray-300 hover:underline hover:text-sky-500'
               }
               onClick={toggleSelection}
