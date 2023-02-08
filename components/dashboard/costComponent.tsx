@@ -1,11 +1,21 @@
-
 import { useState, useEffect } from 'react';
+import useSWR from 'swr';
+import getConfig from 'next/config';
 
-export default function CostComponent({ data }: any) {
+const { publicRuntimeConfig } = getConfig();
+const fetcher = async (url: string) => fetch(url).then((res) => res.json());
+
+export default function CostComponent({ deployedCost }: any) {
   let refinedData: any = '';
   let tableVals: any = '';
-  const dataArr = data.data;
+  const dataArr = deployedCost.data;
+  const kubeip = publicRuntimeConfig.LOCAL_KUBECOST_IP;
+  const { data, error, isLoading } = useSWR(
+    `http://${kubeip}:9090/model/allocation?window=15d&aggregate=cluster`,
+    fetcher
+  );
   const [kubeCostVals, setKubeCostVals] = useState({});
+  const [clusterType, setClusterType] = useState('deployed');
   useEffect(() => {
     const sortFetchedData = async (parsedArr: any) => {
       const getProps = async (parsedArr: []) => {
@@ -56,8 +66,12 @@ export default function CostComponent({ data }: any) {
       };
       getProps(parsedArr);
     };
-    sortFetchedData(dataArr);
-  }, [setKubeCostVals, dataArr]);
+    if (clusterType === 'deployed') {
+      sortFetchedData(dataArr);
+    } else {
+      sortFetchedData(data.data);
+    }
+  }, [setKubeCostVals, dataArr, clusterType, data]);
 
   function makeTableVals(data: any): void {
     if (data) {
@@ -113,9 +127,13 @@ export default function CostComponent({ data }: any) {
   }
   getAverages(kubeCostVals);
   makeTableVals(refinedData);
+  const toggleSelection = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setClusterType(e.currentTarget.id);
+  };
   return (
-    <div className="mx-auto flex flex-row justify-center items-center  ">
-      <div className="ml-6 relative overflow-x-auto border border-gray-600 rounded-lg">
+    <div className="mx-auto flex flex-col items-center justify-center items-center  ">
+      <div className="relative overflow-x-auto border border-gray-600 rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -153,6 +171,36 @@ export default function CostComponent({ data }: any) {
             )}
           </tbody>
         </table>
+      </div>
+      <div className="cluster-selection mx-auto mt-10">
+        <label
+          htmlFor="Toggle3"
+          className="inline-flex items-center p-2 rounded-md cursor-pointer dark:text-gray-800"
+        >
+          <input id="Toggle3" type="checkbox" className="hidden peer" />
+          <span
+            id="deployed"
+            className={
+              clusterType === 'deployed'
+                ? 'bg-gray-300 px-4 py-2 rounded-l dark:bg-sky-500'
+                : 'px-4 py-2 rounded-l dark:bg-gray-300 hover:underline hover:text-sky-500'
+            }
+            onClick={toggleSelection}
+          >
+            Deployed Cluster
+          </span>
+          <span
+            id="local"
+            className={
+              clusterType === 'local'
+                ? 'bg-gray-300 px-4 py-2 rounded-r dark:bg-sky-500'
+                : 'px-4 py-2 rounded-r dark:bg-gray-300 hover:underline hover:text-sky-500'
+            }
+            onClick={toggleSelection}
+          >
+            Local Cluster
+          </span>
+        </label>
       </div>
     </div>
   );

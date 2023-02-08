@@ -1,37 +1,54 @@
+import { dashUrls } from '../../constants';
 import CostComponent from './costComponent';
 import Grafana from './grafana';
-import { dashUrls } from '../../constants';
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import CostError from './costError';
 import Spinner from './spinner';
 import getConfig from 'next/config';
-
 const { publicRuntimeConfig } = getConfig();
-const fetcher = async (url: string) => fetch(url).then((res) => res.json());
 
+const fetcher = async (url: string) => fetch(url).then((res) => res.json());
+// const IP_deployed_env = publicRuntimeConfig.DEPLOYED_CLUSTER_IP;
+// const name_deployed: string = publicRuntimeConfig.DEPLOYED_CLUSTER_NAME;
+// const newUrls = [
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=2`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=3`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=4`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=5`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=6`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=7`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=8`,
+//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=9`,
+// ];
 export default function DashboardContainer() {
   const [clusterType, setClusterType] = useState('deployed');
   const kubeip = publicRuntimeConfig.KUBECOST_IP;
+  const localKubeip = publicRuntimeConfig.KUBECOST_IP;
   const { data, error, isLoading } = useSWR(
     `http://${kubeip}:9090/model/allocation?window=15d&aggregate=cluster`,
     fetcher
   );
-
+  let deployedVisualizers;
   // array for deployed clusters
-  const deployedVisualizers = dashUrls[0][0]
-    ? dashUrls[0].map((url, i) => <Grafana key={i} url={url} />)
-    : [
-        <div key="deployedkey" className="mx-auto h-48 text-sky-500 text-xl">
-          You need to connect deployed clusters to see this data!
-        </div>,
-      ];
+  if (dashUrls[0][0]) {
+    deployedVisualizers = dashUrls[0][0]
+      ? dashUrls[0].map((url, i) => <Grafana key={i} url={url} />)
+      : [
+          <div key="deployedkey" className="mx-auto h-48 text-sky-500 text-xl">
+            You need to connect deployed clusters to see this data!
+          </div>,
+        ];
+  }
 
   // array for local clusters
   const localVisualizers = dashUrls[1][0]
     ? dashUrls[1].map((url, i) => <Grafana key={-i} url={url} />)
     : [
-        <div key="localkey" className="container mx-auto flex flex-col justify-center items-center h-52 text-sky-500 text-3xl">
+        <div
+          key="localkey"
+          className="container mx-auto flex flex-col justify-center items-center h-52 text-sky-500 text-3xl"
+        >
           You need to connect local clusters to see this data!
         </div>,
       ];
@@ -98,7 +115,8 @@ export default function DashboardContainer() {
                 : 'hidden'
             }
           >
-            {deployedVisualizers}
+            {/*@ts-ignore*/}
+            {dashUrls[0][0] && deployedVisualizers}
           </div>
           <div
             className={
@@ -124,7 +142,7 @@ export default function DashboardContainer() {
                   <Spinner />
                 ) : (
                   <>
-                    <CostComponent data={data} />
+                    <CostComponent deployedCost={data} />
                   </>
                 )}
               </>
