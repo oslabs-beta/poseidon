@@ -1,7 +1,12 @@
-export NODE_ENV=development
+NODE_ENV=development
 MONGO_URI="mongodb+srv://xtchow:poseidon@cluster0.lkfnb5l.mongodb.net/?retryWrites=true&w=majority"
 NEXTAUTH_URL=http://localhost:3500
 BCRYPT_SALT=10
 NEXTAUTH_SECRET=12345678910
 LOCAL_CLUSTER_IP = "localhost:3300"
 DEPLOYED_CLUSTER_IP = "34.28.48.106"
+LOCAL_CLUSTER_NAME = "Jd5xvc04z"
+DEPLOYED_CLUSTER_NAME = "3UwLYP04k"
+DEPLOYED_CLUSTER_NAME_2 = "eYlLLE0Vk"
+KUBECOST_IP = "34.121.148.52"
+LOCAL_KUBECOST_IP = "127.0.0.1"

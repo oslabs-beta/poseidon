@@ -17,14 +17,12 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/LogoPNG.png" />
       </Head>
-
       <Formik
         initialValues={{
           email: '',
           password: '',
-          tenantKey: ''
+          tenantKey: '',
         }}
-
         validationSchema={Yup.object({
           email: Yup.string()
             .max(30, 'Must be 30 characters or less')
@@ -34,7 +32,6 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
             .max(30, 'Must be 30 characters or less')
             .required('Please enter your password'),
         })}
-
         onSubmit={async (values, { setSubmitting }) => {
           const res: any = await signIn('credentials', {
             redirect: false,
@@ -53,10 +50,8 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
       >
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
-            <div className="bg-slate-900 flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
-              <div
-                className="pt-10 relative z-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2"
-                >
+            <div className="body bg-slate-900 flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
+              <div className="pt-10 relative z-10 col-span-3 bg-slate-800 rounded-xl xl:ml-0 dark:ring-1 dark:ring-inset dark:ring-white/10 p-5  shadow-neutral-900 shadow-2xl space-y-2">
                 <Image
                   className="mx-auto hover:animate-[spin_6s_linear_infinite]"
                   src={Logo}
@@ -154,7 +149,6 @@ export default function SignIn({ csrfToken }: any): JSX.Element {
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span>
                   </a>
                 </div>
-
               </div>
             </div>
           </form>

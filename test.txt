@@ -1,0 +1,12 @@
+NODE_ENV=development
+MONGO_URI="[your mongo db link here]"
+NEXTAUTH_URL=http://localhost:3500
+BCRYPT_SALT=10
+NEXTAUTH_SECRET=[your secret here (any combination of letters or numbers)]
+LOCAL_CLUSTER_IP = [your grafana link here: e.g. "localhost:3300"]
+DEPLOYED_CLUSTER_IP = [your cloud-deployed ip address here, e.g. "0.0.0.0"]
+LOCAL_CLUSTER_NAME = [your local cluster's grafana embed link name (.../d-solo/__your_name__/...)]
+DEPLOYED_CLUSTER_NAME = [your deployed cluster's grafana embed link name (.../d-solo/__your_name__/...)]
+DEPLOYED_CLUSTER_NAME_2 = [OPTIONAL: any other node in your deployed cluster's grafana embed link name (.../d-solo/__your_name__/...)]
+KUBECOST_IP = [your cloud-deployed kubecost ip address here, e.g. "0.0.0.0"]
+LOCAL_KUBECOST_IP = [your local kubecost ip address here, e.g. "0.0.0.0"]
