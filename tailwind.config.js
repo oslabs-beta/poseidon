@@ -5,7 +5,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
   ],
-  theme: {},
+  theme: {
+    borderWidth: {
+      DEFAULT: '0.2px',
+    },
+  },
   fontFamily: {
     sans: ['Inter var, sans-serif', { fontFeatureSettings: '"cv11", "ss01"' }],
   },
@@ -17,4 +21,3 @@ module.exports = {
   plugins: [require('flowbite/plugin')],
   plugins: [],
 };
-

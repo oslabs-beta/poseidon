@@ -9,22 +9,13 @@ import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
 
 const fetcher = async (url: string) => fetch(url).then((res) => res.json());
-// const IP_deployed_env = publicRuntimeConfig.DEPLOYED_CLUSTER_IP;
-// const name_deployed: string = publicRuntimeConfig.DEPLOYED_CLUSTER_NAME;
-// const newUrls = [
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=2`,
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=3`,
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=4`,
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=5`,
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=6`,
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=7`,
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=8`,
-//   `http://${IP_deployed_env}/d-solo/${name_deployed}/node-exporter-nodes?orgId=1&refresh=30s&from=now-2h&to=now&panelId=9`,
-// ];
 export default function DashboardContainer() {
   const [clusterType, setClusterType] = useState('deployed');
   const kubeip = publicRuntimeConfig.KUBECOST_IP;
   const localKubeip = publicRuntimeConfig.KUBECOST_IP;
+  const localClusterIp = publicRuntimeConfig.LOCAL_CLUSTER_IP;
+  const deployedClusterIp = publicRuntimeConfig.DEPLOYED_CLUSTER_IP;
+
   const { data, error, isLoading } = useSWR(
     `http://${kubeip}:9090/model/allocation?window=15d&aggregate=cluster`,
     fetcher
@@ -86,8 +77,8 @@ export default function DashboardContainer() {
               id="local"
               className={
                 clusterType === 'local'
-                  ? 'bg-gray-300 px-4 py-2 dark:bg-sky-500'
-                  : 'px-4 py-2 dark:bg-gray-300 hover:underline hover:text-sky-500'
+                  ? 'bg-gray-300 px-4 border-x-[0.2px] border-slate-900 py-2 dark:bg-sky-500'
+                  : 'px-4 py-2 dark:bg-gray-300 border-x-[0.2px] border-slate-900 hover:underline hover:text-sky-500'
               }
               onClick={toggleSelection}
             >
@@ -116,7 +107,16 @@ export default function DashboardContainer() {
             }
           >
             {/*@ts-ignore*/}
-            {dashUrls[0][0] && deployedVisualizers}
+            {deployedClusterIp ? (
+              deployedVisualizers
+            ) : (
+              <>
+                <div className="container mx-auto flex flex-col justify-center items-center h-52 text-sky-500 text-3xl">
+                  You need to add deployed cluster IP address to .env.local file
+                  to see this data!
+                </div>
+              </>
+            )}
           </div>
           <div
             className={
@@ -125,7 +125,16 @@ export default function DashboardContainer() {
                 : 'hidden'
             }
           >
-            {localVisualizers}
+            {localClusterIp ? (
+              <>{localVisualizers}</>
+            ) : (
+              <>
+                <div className="container mx-auto flex flex-col justify-center items-center h-52 text-sky-500 text-3xl">
+                  You need to add local cluster IP address to .env.local file to
+                  see this data!
+                </div>
+              </>
+            )}
           </div>
           <div
             className={
