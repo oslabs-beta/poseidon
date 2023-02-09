@@ -19,7 +19,8 @@ export default function Footer() {
           </h1>
           <div className="flex items-center justify-center mx-auto rounded-lg font-black text-zinc-400 md:mt-12 md:max-w-lg text-center lg:text-lg">
             <Link
-              href="/login"
+              href="http://www.os-poseidon.com"
+              target="_blank"
               className=" ml-8 group relative mr-10 h-12 w-40 overflow-hidden rounded-lg bg-sky-500 text-lg shadow flex items-center justify-center "
             >
               <div className="absolute inset-0 w-0 bg-gradient-to-r from-sky-500 to-green-400  transition-all duration-[250ms] ease-out group-hover:w-full"></div>
