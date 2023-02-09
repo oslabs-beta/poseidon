@@ -43,6 +43,7 @@ export default function Footer() {
                 © 2023 by{' '}
                 <a
                   href="https://www.linkedin.com/in/joshuah-edwards/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Joshuah Edwards
@@ -50,6 +51,7 @@ export default function Footer() {
                 ,{' '}
                 <a
                   href="https://www.linkedin.com/in/william-moody/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Will Moody
@@ -57,6 +59,7 @@ export default function Footer() {
                 ,{' '}
                 <a
                   href="https://www.linkedin.com/in/xtchow/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Sarah Chow
@@ -64,6 +67,7 @@ export default function Footer() {
                 ,{' '}
                 <a
                   href="https://www.linkedin.com/in/alina-grafkina-955a56179/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Alina Grafkina
