@@ -19,7 +19,8 @@ export default function Footer() {
           </h1>
           <div className="flex items-center justify-center mx-auto rounded-lg font-black text-zinc-400 md:mt-12 md:max-w-lg text-center lg:text-lg">
             <Link
-              href="/login"
+              href="http://www.os-poseidon.com"
+              target="_blank"
               className=" ml-8 group relative mr-10 h-12 w-40 overflow-hidden rounded-lg bg-sky-500 text-lg shadow flex items-center justify-center "
             >
               <div className="absolute inset-0 w-0 bg-gradient-to-r from-sky-500 to-green-400  transition-all duration-[250ms] ease-out group-hover:w-full"></div>
@@ -42,6 +43,7 @@ export default function Footer() {
                 © 2023 by{' '}
                 <a
                   href="https://www.linkedin.com/in/joshuah-edwards/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Joshuah Edwards
@@ -49,6 +51,7 @@ export default function Footer() {
                 ,{' '}
                 <a
                   href="https://www.linkedin.com/in/william-moody/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Will Moody
@@ -56,6 +59,7 @@ export default function Footer() {
                 ,{' '}
                 <a
                   href="https://www.linkedin.com/in/xtchow/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Sarah Chow
@@ -63,6 +67,7 @@ export default function Footer() {
                 ,{' '}
                 <a
                   href="https://www.linkedin.com/in/alina-grafkina-955a56179/"
+                  target="_blank"
                   className="hover:underline hover:text-sky-500"
                 >
                   Alina Grafkina
