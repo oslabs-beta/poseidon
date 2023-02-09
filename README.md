@@ -4,6 +4,8 @@
   [![banner](/public/assets/banner.png)](https://www.os-poseidon.com/)
   <!-- h2 tagline here -->
   <!-- short description -->
+  ### The Cluster Data Visualizer and Cost Analysis app delivers cost estimates, stunning visualizations, and crucial insights to optimize deployments and stay within budget.
+   <!-- Its user-friendly interface empowers organizations to make informed decisions with ease. A must-have for any Kubernetes pro. -->
   <!-- quick links -->
 
   <!-- https://ileriayo.github.io/markdown-badges/#markdown-badges -->
@@ -19,8 +21,8 @@
   [![Cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)](https://www.cypress.io/)
   [![License](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](public/LICENSE)
 
-  [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)]()
-  [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)]()
+  [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@drjoshdpt/poseidon-a-kubernetes-cluster-visualization-cost-analysis-tool-d0fb55c2858c)
+  [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/hqeGqh0ksPg)
   [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/osposeidon/)
 </div>
 
@@ -28,7 +30,7 @@
   <summary><h2 style="display: inline;">Quick Start</h2></summary>
 
   1. Fork this repository to your profile, clone it to your local machine, navigate into the directory, then run `npm install`.
-  2. Create a `.env.local` file and paste in the following:
+  2. Ensure your local and/or cloud clusters are deployed, then within the root directory, create a `.env.local` file and paste in the following:
       ```
       NODE_ENV = development
       MONGO_URI = "[REPLACE THIS WITH YOUR MONGODB CONNECTION STRING]"
@@ -38,14 +40,14 @@
       KUBECOST_IP = "[REPLACE THIS WITH YOUR DEPLOYED KUBECOST IP ADDRESS]"
       LOCAL_KUBECOST_IP = "[REPLACE THIS WITH YOUR LOCAL KUBECOST IP ADDRESS]"
       LOCAL_CLUSTER_IP = "localhost:3300"
-      LOCAL_CLUSTER_NAME = "[REPLACE THIS WITH THE UNIQUE EMBED ID FROM YOUR GRAFANA SHARE LINK]"
+      LOCAL_CLUSTER_NAME = "[REPLACE THIS WITH THE UNIQUE EMBED ID FROM YOUR LOCAL CLUSTER'S GRAFANA SHARE LINK]"
       DEPLOYED_CLUSTER_IP = "[REPLACE THIS WITH YOUR DEPLOYED* CLUSTER IP ADDRESS]"
-      DEPLOYED_CLUSTER_NAME = "[REPLACE THIS WITH THE UNIQUE EMBED ID FROM YOUR GRAFANA SHARE LINK]"
-      DEPLOYED_CLUSTER_NAME_2 = "[REPLACE THIS WITH THE UNIQUE EMBED ID FROM YOUR GRAFANA SHARE LINK]"
+      DEPLOYED_CLUSTER_NAME = "[REPLACE THIS WITH THE UNIQUE EMBED ID FROM YOUR CLOUD HOSTED GRAFANA SHARE LINK]"
+      DEPLOYED_CLUSTER_NAME_2 = "[OPTIONAL: REPLACE THIS WITH THE UNIQUE EMBED ID FROM YOUR CLOUD HOSTED GRAFANA SHARE LINK]"
       ```
       - Be sure to replace the areas of all caps text including the enclosing square brackets with the specified information, then save the file.
-        - *functions for both depolyments on AWS and/or Google.
-      - For more details, please visit our website [os-poseidon.com/setup](https://www.os-poseidon.com/setup).
+        - *Functions for both depolyments on AWS and/or Google.
+      - For more detailed instructions, please visit our website [os-poseidon.com/setup](https://www.os-poseidon.com/setup).
   3. Regarding your command options:
       - `npm run port` runs the application on port 3500.
       - `npm run forward` ..?
@@ -60,17 +62,20 @@
 - [ ] Apply an input field in the registration form to store cluster IP addresses for the client's ease of use.
 - [ ] Connect...
 - [ ] Implement an authentication hierarchy to allow for role and privilege assignments. This secures and regulates any manipulations to an organization's clusters.
-- [ ] Create a filter for the graphs on the dashboard...
+- [ ] Create a filter for the graphs on the dashboard for cluster and data types.
 - [ ] Integrate [D3.js](https://d3-graph-gallery.com/) for graph styling.
 
 
 <!--
 • dark mode, flexible screen size
 • Deploy the app to AWS?
+host online
 • what does it mean to modify a cluster?
     Create the feature to be able to modify the clusters.
+    modifying cluster specifics
 • Determine a method for accessing the ID of the Grafana iframe in a dynamic manner.
-• Implement a notification system in the app that allows users to receive notifications through messages, Slack, and email when the cluster goes down.
+apply a regex function to identify the id name from embed url
+• Implement a notification system in the app that allows users to receive notifications through messages, Slack API, and email when the cluster goes down.
  -->
 
 
