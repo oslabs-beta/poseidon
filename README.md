@@ -1,13 +1,8 @@
 
 <div align="center">
 
-  [![banner](/public/assets/banner.png)](https://www.os-poseidon.com/)
+  ## [![banner](/public/assets/banner.png)](https://www.os-poseidon.com/)
   <!-- h2 tagline here -->
-  <!-- short description -->
-  ### The Cluster Data Visualizer and Cost Analysis app delivers cost estimates, stunning visualizations, and crucial insights to optimize deployments and stay within budget.
-   <!-- Its user-friendly interface empowers organizations to make informed decisions with ease. A must-have for any Kubernetes pro. -->
-  <!-- quick links -->
-
   <!-- https://ileriayo.github.io/markdown-badges/#markdown-badges -->
   [![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
@@ -20,6 +15,12 @@
   [![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
   [![Cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)](https://www.cypress.io/)
   [![License](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](public/LICENSE)
+  <!-- short description -->
+  ### This Cluster Data Visualizer and Cost Analysis app delivers cost estimates, stunning visualizations, and crucial insights to optimize deployments and stay within budget.
+   <!-- Its user-friendly interface empowers organizations to make informed decisions with ease. A must-have for any Kubernetes pro. -->
+  <!-- quick links -->
+
+
 
   [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@drjoshdpt/poseidon-a-kubernetes-cluster-visualization-cost-analysis-tool-d0fb55c2858c)
   [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/hqeGqh0ksPg)
@@ -49,8 +50,8 @@
         - *Functions for both depolyments on AWS and/or Google.
       - For more detailed instructions, please visit our website [os-poseidon.com/setup](https://www.os-poseidon.com/setup).
   3. Regarding your command options:
-      - `npm run port` runs the application on port 3500.
-      - `npm run forward` ..?
+      - `npm run port` runs the application on port 3500 specifically for cloud deployments.
+      - `npm run forward` runs the application on port 3500 for both local and cloud deployments.
       - `npm run test` assures that any processes on port 3500 is killed then in parallel runs the application on that port and opens Cypress.
 </details>
 
@@ -59,24 +60,14 @@
 -
 
 ## Iteration Plans
-- [ ] Apply an input field in the registration form to store cluster IP addresses for the client's ease of use.
-- [ ] Connect...
+- [ ] Apply a regex functionality to identify the id name from embed urls and provide an input field in the registration form to store cluster IP addresses for the client's ease of use.
+- [ ] Connect a feature to directly customize cluster specifics
 - [ ] Implement an authentication hierarchy to allow for role and privilege assignments. This secures and regulates any manipulations to an organization's clusters.
 - [ ] Create a filter for the graphs on the dashboard for cluster and data types.
-- [ ] Integrate [D3.js](https://d3-graph-gallery.com/) for graph styling.
-
-
-<!--
-• dark mode, flexible screen size
-• Deploy the app to AWS?
-host online
-• what does it mean to modify a cluster?
-    Create the feature to be able to modify the clusters.
-    modifying cluster specifics
-• Determine a method for accessing the ID of the Grafana iframe in a dynamic manner.
-apply a regex function to identify the id name from embed url
-• Implement a notification system in the app that allows users to receive notifications through messages, Slack API, and email when the cluster goes down.
- -->
+- [ ] Integrate D3.js for graph styling.
+- [ ] Move forward with AWS hosting for online deployment of the app which allows for greater scalability and dependability.
+- [ ] Develop a notification system within the application to enable users to receive notifications, such as through the Slack API, in case their clusters experiences downtime.
+- [ ] Improve visual comfort and reduce eye strain by implementing dark mode and including dynamic display scaling.
 
 
 
