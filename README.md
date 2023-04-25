@@ -57,7 +57,9 @@
 
 
 ## Current Features
--
+- Cloud and local K8s cluster support
+- Cluster metric visualization
+- Cost-analysis via Kubecost
 
 ## Iteration Plans
 - [ ] Apply a regex functionality to identify the id name from embed urls and provide an input field in the registration form to store cluster IP addresses for the client's ease of use.
